@@ -1,0 +1,38 @@
+# This file is maintained automatically by "terraform init".
+# Manual edits may be lost in future updates.
+
+provider "registry.terraform.io/hashicorp/aws" {
+  version = "3.63.0"
+  hashes = [
+    "h1:v9aPF3aaBpk0uSO5pfggYJKGgP/Ur28hZRJs1jS+ttI=",
+    "zh:42c6c98b294953a4e1434a331251e539f5372bf6779bd61ab5df84cac0545287",
+    "zh:5493773762a470889c9a23db97582d3a82035847c8d3bd13323b4c3012abf325",
+    "zh:550d22ff9fed4d817a922e7b84bd9d1f2ef8d3afa00832cf66b8cd5f0e6dc748",
+    "zh:632cb5e2d9d5041875f57174236eafe5b05dbf26750c1041ab57eb08c5369fe2",
+    "zh:7cfeaf5bde1b28bd010415af1f3dc494680a8374f1a26ec19db494d99938cc4e",
+    "zh:99d871606b67c8aefce49007315de15736b949c09a9f8f29ad8af1e9ce383ed3",
+    "zh:c4fc8539ffe90df5c7ae587fde495fac6bc0186fec2f2713a8988a619cef265f",
+    "zh:d0a26493206575c99ca221d78fe64f96a8fbcebe933af92eea6b39168c1f1c1d",
+    "zh:e156fdc964fdd4a7586ec15629e20d2b06295b46b4962428006e088145db07d6",
+    "zh:eb04fc80f652b5c92f76822f0fec1697581543806244068506aed69e1bb9b2af",
+    "zh:f5638a533cf9444f7d02b5527446cdbc3b2eab8bcc4ec4b0ca32035fe6f479d3",
+  ]
+}
+
+provider "registry.terraform.io/hashicorp/nomad" {
+  version = "1.4.15"
+  hashes = [
+    "h1:4H/rReWAv3a3N2etfZswKz1dIeMiPru6cIrBqnuuIsc=",
+    "zh:0c8d6ea88571113f5c886566ee2220ee78fe6537d9f96bc107fb39d45de5cba5",
+    "zh:412f4648e6989a1c4d5eb27ec072317bd5a6e401ca2109f9869ac4f4ab49ff2f",
+    "zh:4351ec9274264aa081f5cc07e8b19e4b40c81a9d23d7f4ddd88dd63988ffe311",
+    "zh:44143738cbdb7defaf180cb59cba3d6ece7e3e2565bd3c8c9fa9b75d38fb53ca",
+    "zh:5a1485b482d9602759749a97847d6f81d96499c2bb53c69596c2465109d43197",
+    "zh:5f71922db49674b3263f79252d51fb16a69b45ff0c22079d7a1210cc479c27e5",
+    "zh:626bd4fb8eab5abc55014190fa8bd877bb04a58c186920f4bf2d2cc625c22e84",
+    "zh:865f198f8e710955f23d7d75f95cb20510574d7931c71b5e8508b785ed52ea3d",
+    "zh:924120d03bb25c2c8120507b3e95341a42bab62a6cd5866dbd2190c5b336475f",
+    "zh:95b58368e11c8511a8bc88dd470cae3cc60e397dd39581211f1de23d12552990",
+    "zh:b29ebbb0045dd4ba919728cafb509424d5465605fdef4f67171e22033c2cf921",
+  ]
+}

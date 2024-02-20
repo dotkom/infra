@@ -1,0 +1,6 @@
+### Terraform ###
+
+.terraform
+!bootstrap.tfstate
+*.tfstate
+*.tfstate.backup
