@@ -1,22 +1,36 @@
-name: "Lint"
+name: Terraform Lint
+
 on:
   push:
     branches:
       - main
   pull_request:
-    branches:
-      - main
+    types:
+      - opened
+      - synchronize
+
 jobs:
-  terraform:
-    name: "Terraform fmt"
+  tflint:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+        name: Checkout source code
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v1
+      - uses: actions/cache@v3
+        name: Cache plugin dir
+        with:
+          path: ~/.tflint.d/plugins
+          key: tflint-${{ hashFiles('.tflint.hcl') }}
 
-      - name: Terraform Format
-        id: fmt
-        run: terraform fmt -check -recursive
+      - uses: terraform-linters/setup-tflint@v4
+        name: Setup TFLint
+        with:
+          tflint_version: v0.44.1
+
+      - name: Init TFLint
+        run: tflint --init
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - run: tflint --chdir bootstrap -f compact
