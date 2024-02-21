@@ -4,3 +4,7 @@
 !bootstrap.tfstate
 *.tfstate
 *.tfstate.backup
+
+### Environment Variables ###
+
+*.env.*

@@ -34,3 +34,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
 
       - run: tflint --chdir bootstrap -f compact
+      - run: tflint --chdir dashboard-prod -f compact
+      - run: tflint --chdir web-prod -f compact
+      - run: tflint --chdir rad-rif-prod -f compact
+      - run: tflint --chdir modules/vercel-application -f compact
