@@ -3,7 +3,7 @@ locals {
 }
 
 module "web_database" {
-  source = "../modules/neon-project"
+  source = "../../modules/neon-project"
 
   project_name = local.web_project_name
   role_name    = "web"

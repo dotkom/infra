@@ -1,5 +1,5 @@
 module "email_lambda" {
-  source = "../modules/aws-docker-lambda"
+  source = "../../modules/aws-docker-lambda"
 
   ecr_repository_name = "brevduen-staging"
   function_name       = "brevduen-staging"

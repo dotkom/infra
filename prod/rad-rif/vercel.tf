@@ -3,7 +3,7 @@ locals {
 }
 
 module "vercel_project" {
-  source = "../modules/vercel-application"
+  source = "../../modules/vercel-application"
 
   project_name   = "rif"
   domain_name    = local.rad_rif_domain_name

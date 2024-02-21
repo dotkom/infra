@@ -1,5 +1,5 @@
 module "api_gateway" {
-  source = "../modules/aws-api-gateway"
+  source = "../../modules/aws-api-gateway"
 
   domain          = local.gateway_domain_name
   zone_id         = data.aws_route53_zone.online_ntnu_no.zone_id

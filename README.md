@@ -15,12 +15,13 @@ everything in OnlineWeb and featured first-party applications built by Dotkom.
   things like DNS, VPC, and other shared resources.
 
 Each project is organized as a separate directory in the root of the repository, with each environment a project is
-available in, having the `-prod` or `-staging` suffix.
+available in, located in the `prod` or `staging` directories.
 [Please read the rationale for this decision](#separating-and-duplicating-configuration-for-each-environment).
 
-- `dashboard-prod` & `dashboard-staging` contains code for the OnlineWeb Dashboard.
-- `rad-rif-prod` & `rad-rif-staging` contains code for the report interest form application.
-- `web-prod` & `web-staging` contains code for the OnlineWeb web app.
+- `prod/dashboard` & `staging/dashboard` contains code for the OnlineWeb Dashboard.
+- `prod/rad-rif` & `staging/rad-rif` contains code for the report interest form application.
+- `prod/web` & `staging/web` contains code for the OnlineWeb web app.
+- `prod/brevduen` & `staging/brevduen` contains code for the email api gateway application.
 
 ## Contributing
 

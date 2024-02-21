@@ -4,7 +4,7 @@ locals {
 }
 
 module "vercel_project" {
-  source = "../modules/vercel-application"
+  source = "../../modules/vercel-application"
 
   project_name   = "web"
   domain_name    = local.web_domain_name

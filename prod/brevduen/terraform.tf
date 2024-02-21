@@ -12,10 +12,6 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 5.33"
     }
-    doppler = {
-      source  = "DopplerHQ/doppler"
-      version = "~> 1.3.0"
-    }
   }
 }
 
@@ -38,13 +34,4 @@ provider "aws" {
       Project = "brevduen-prod"
     }
   }
-}
-
-variable "DOPPLER_TOKEN_MONOWEB" {
-  description = "TF Variable for the doppler token"
-  type        = string
-}
-
-provider "doppler" {
-  doppler_token = var.DOPPLER_TOKEN_MONOWEB
 }

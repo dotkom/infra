@@ -34,7 +34,19 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
 
       - run: tflint --chdir bootstrap -f compact
-      - run: tflint --chdir dashboard-prod -f compact
-      - run: tflint --chdir web-prod -f compact
-      - run: tflint --chdir rad-rif-prod -f compact
+      - run: tflint --chdir online-infra -f compact
+
+      - run: tflint --chdir prod/dashboard -f compact
+      - run: tflint --chdir prod/web -f compact
+      - run: tflint --chdir prod/rad-rif -f compact
+      - run: tflint --chdir prod/brevduen -f compact
+
+      - run: tflint --chdir staging/web -f compact
+      - run: tflint --chdir staging/brevduen -f compact
+
+      - run: tflint --chdir modules/aws-acm-certificate -f compact
+      - run: tflint --chdir modules/aws-api-gateway -f compact
+      - run: tflint --chdir modules/aws-docker-lambda -f compact
+      - run: tflint --chdir modules/aws-s3-public-bucket -f compact
+      - run: tflint --chdir modules/neon-project -f compact
       - run: tflint --chdir modules/vercel-application -f compact
