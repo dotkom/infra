@@ -11,6 +11,8 @@ resource "vercel_project" "this" {
   build_command  = var.build_command
   root_directory = var.root_directory
 
+  serverless_function_region = "arn1"
+
   ignore_command = "if [[ $VERCEL_GIT_COMMIT_REF =~ ^renovate ]]; then exit 0; else exit 1; fi"
 }
 
