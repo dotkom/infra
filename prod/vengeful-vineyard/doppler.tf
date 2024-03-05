@@ -1,4 +1,4 @@
 data "doppler_secrets" "vengeful" {
   project = "vengeful-vineyard"
-  config  = "prod"
+  config  = "prd"
 }
