@@ -12,12 +12,3 @@ resource "aws_ecrpublic_repository" "pgx_ulid" {
 
   provider = aws.us-east-1
 }
-
-# TODO: Delete this with the deletion of Cognito
-resource "aws_route53_record" "null_record" {
-  name    = "auth.online.ntnu.no"
-  type    = "A"
-  zone_id = aws_route53_zone.online_ntnu_no.zone_id
-  ttl     = 3600
-  records = ["127.0.0.1"]
-}
