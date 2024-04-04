@@ -16,10 +16,6 @@ terraform {
       source  = "DopplerHQ/doppler"
       version = "~> 1.3.0"
     }
-    neon = {
-      source  = "dotkom/neon"
-      version = "~> 0.1.1"
-    }
   }
 }
 
@@ -52,5 +48,3 @@ variable "DOPPLER_TOKEN_PIZZAPICKER" {
 provider "doppler" {
   doppler_token = var.DOPPLER_TOKEN_PIZZAPICKER
 }
-
-provider "neon" {}
