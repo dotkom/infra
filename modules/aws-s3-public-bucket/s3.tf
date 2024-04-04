@@ -21,11 +21,11 @@ resource "aws_s3_bucket_website_configuration" "this" {
   bucket = aws_s3_bucket.this.id
 
   error_document {
-    key = "_error.html"
+    key = "index.html"
   }
 
   index_document {
-    suffix = "_index.html"
+    suffix = "index.html"
   }
 }
 

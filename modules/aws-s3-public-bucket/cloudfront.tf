@@ -31,11 +31,18 @@ resource "aws_cloudfront_distribution" "this" {
       }
     }
 
-    viewer_protocol_policy = "allow-all"
-    min_ttl                = 3600
+    viewer_protocol_policy = "redirect-to-https"
+    min_ttl                = 0
     default_ttl            = 3600
     max_ttl                = 86400
     compress               = true
+  }
+
+  custom_error_response {
+    error_caching_min_ttl = 0
+    error_code            = 404
+    response_code         = 200
+    response_page_path    = "/index.html"
   }
 
   restrictions {
