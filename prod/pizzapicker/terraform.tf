@@ -24,7 +24,10 @@ provider "aws" {
 
   default_tags {
     tags = {
-      Project = "pizzapicker-prod"
+      Project     = "pizzapicker-prod"
+      Deployment  = "terraform"
+      Repository  = "terraform-monorepo"
+      Environment = "prod"
     }
   }
 }
@@ -35,7 +38,10 @@ provider "aws" {
 
   default_tags {
     tags = {
-      Project = "pizzapicker-prod"
+      Project     = "pizzapicker-prod"
+      Deployment  = "terraform"
+      Repository  = "terraform-monorepo"
+      Environment = "prod"
     }
   }
 }

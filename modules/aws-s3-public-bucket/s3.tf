@@ -4,6 +4,8 @@
 
 resource "aws_s3_bucket" "this" {
   bucket = var.domain_name
+
+  tags = local.tags_all
 }
 
 resource "aws_s3_bucket_cors_configuration" "this" {

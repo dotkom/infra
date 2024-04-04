@@ -9,4 +9,6 @@ resource "aws_lambda_function" "this" {
   environment {
     variables = var.environment_variables
   }
+
+  tags = local.tags_all
 }

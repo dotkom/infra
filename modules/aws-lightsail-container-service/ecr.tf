@@ -8,6 +8,7 @@ module "ecr_repository" {
   source = "../aws-ecr-repository"
 
   ecr_repository_name = var.service_name
+  tags                = local.tags_all
 }
 
 resource "aws_ecr_repository_policy" "pull" {

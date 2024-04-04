@@ -28,7 +28,10 @@ provider "aws" {
 
   default_tags {
     tags = {
-      Project = "vengeful-vineyard-prod"
+      Project     = "vengeful-vineyard-prod"
+      Deployment  = "terraform"
+      Repository  = "terraform-monorepo"
+      Environment = "prod"
     }
   }
 }
@@ -39,7 +42,10 @@ provider "aws" {
 
   default_tags {
     tags = {
-      Project = "vengeful-vineyard-prod"
+      Project     = "vengeful-vineyard-prod"
+      Deployment  = "terraform"
+      Repository  = "terraform-monorepo"
+      Environment = "prod"
     }
   }
 }

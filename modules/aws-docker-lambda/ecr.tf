@@ -5,6 +5,8 @@ resource "aws_ecr_repository" "this" {
   image_scanning_configuration {
     scan_on_push = false
   }
+
+  tags = local.tags_all
 }
 
 resource "aws_ecr_lifecycle_policy" "this" {

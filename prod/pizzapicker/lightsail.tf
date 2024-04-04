@@ -22,5 +22,5 @@ module "pizzapicker_server" {
   certificate_name                      = module.pizzapicker_certificate.certificate_name
 
   healthcheck_timeout = 10
-  container_port = 3000
+  container_port      = 3000
 }

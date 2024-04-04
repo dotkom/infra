@@ -12,3 +12,15 @@ variable "certificate_arn" {
   description = "Acquired ACM Certificate for the wanted domain"
   type        = string
 }
+
+variable "tags" {
+  description = "Tags to apply to the resources"
+  type        = map(string)
+  default     = {}
+}
+
+locals {
+  tags_all = merge(var.tags, {
+    Module = "aws-api-gateway"
+  })
+}

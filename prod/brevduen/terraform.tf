@@ -20,7 +20,10 @@ provider "aws" {
 
   default_tags {
     tags = {
-      Project = "brevduen-prod"
+      Project     = "brevduen-prod"
+      Deployment  = "terraform"
+      Repository  = "terraform-monorepo"
+      Environment = "prod"
     }
   }
 }
@@ -31,7 +34,10 @@ provider "aws" {
 
   default_tags {
     tags = {
-      Project = "brevduen-prod"
+      Project     = "brevduen-prod"
+      Deployment  = "terraform"
+      Repository  = "terraform-monorepo"
+      Environment = "prod"
     }
   }
 }

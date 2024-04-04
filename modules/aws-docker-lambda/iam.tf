@@ -9,6 +9,8 @@ resource "aws_iam_role" "lambda_execution_role" {
       policy = inline_policy.value["policy"]
     }
   }
+
+  tags = local.tags_all
 }
 
 resource "aws_iam_role_policy_attachment" "aws_lambda_execution_role" {

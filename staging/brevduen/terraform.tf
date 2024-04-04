@@ -20,7 +20,10 @@ provider "aws" {
 
   default_tags {
     tags = {
-      Project = "brevduen-staging"
+      Project     = "brevduen-staging"
+      Deployment  = "terraform"
+      Repository  = "terraform-monorepo"
+      Environment = "staging"
     }
   }
 }
@@ -31,7 +34,10 @@ provider "aws" {
 
   default_tags {
     tags = {
-      Project = "brevduen-staging"
+      Project     = "brevduen-staging"
+      Deployment  = "terraform"
+      Repository  = "terraform-monorepo"
+      Environment = "staging"
     }
   }
 }

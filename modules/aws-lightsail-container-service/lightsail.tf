@@ -19,6 +19,7 @@ resource "aws_lightsail_container_service" "this" {
   }
 
   depends_on = [aws_route53_record.certificate]
+  tags       = local.tags_all
 }
 
 resource "aws_lightsail_container_service_deployment_version" "this" {

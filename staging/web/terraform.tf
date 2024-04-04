@@ -24,7 +24,10 @@ provider "aws" {
 
   default_tags {
     tags = {
-      Project = "web-staging"
+      Project     = "web-staging"
+      Deployment  = "terraform"
+      Repository  = "terraform-monorepo"
+      Environment = "staging"
     }
   }
 }
@@ -35,7 +38,10 @@ provider "aws" {
 
   default_tags {
     tags = {
-      Project = "web-staging"
+      Project     = "web-staging"
+      Deployment  = "terraform"
+      Repository  = "terraform-monorepo"
+      Environment = "staging"
     }
   }
 }

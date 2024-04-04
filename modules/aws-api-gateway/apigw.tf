@@ -8,6 +8,8 @@ resource "aws_apigatewayv2_api" "this" {
     allow_methods = ["GET", "HEAD", "POST"]
     allow_headers = ["*"]
   }
+
+  tags = local.tags_all
 }
 
 resource "aws_apigatewayv2_domain_name" "this" {
@@ -17,12 +19,16 @@ resource "aws_apigatewayv2_domain_name" "this" {
     endpoint_type   = "REGIONAL"
     security_policy = "TLS_1_2"
   }
+
+  tags = local.tags_all
 }
 
 resource "aws_apigatewayv2_stage" "default" {
   api_id      = aws_apigatewayv2_api.this.id
   name        = "$default"
   auto_deploy = true
+
+  tags = local.tags_all
 }
 
 resource "aws_apigatewayv2_api_mapping" "this" {

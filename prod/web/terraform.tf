@@ -24,7 +24,10 @@ provider "aws" {
 
   default_tags {
     tags = {
-      Project = "web-prod"
+      Project     = "web-prod"
+      Deployment  = "terraform"
+      Repository  = "terraform-monorepo"
+      Environment = "prod"
     }
   }
 }
@@ -35,7 +38,10 @@ provider "aws" {
 
   default_tags {
     tags = {
-      Project = "web-prod"
+      Project     = "web-prod"
+      Deployment  = "terraform"
+      Repository  = "terraform-monorepo"
+      Environment = "prod"
     }
   }
 }

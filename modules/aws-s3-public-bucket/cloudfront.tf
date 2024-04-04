@@ -58,4 +58,5 @@ resource "aws_cloudfront_distribution" "this" {
   }
 
   depends_on = [aws_s3_bucket.this, aws_s3_bucket_website_configuration.this]
+  tags       = local.tags_all
 }

@@ -60,3 +60,15 @@ variable "healthcheck_timeout" {
   type        = number
   default     = 2
 }
+
+variable "tags" {
+  description = "Tags to apply to the resources"
+  type        = map(string)
+  default     = {}
+}
+
+locals {
+  tags_all = merge(var.tags, {
+    Module = "aws-lightsail-container-service"
+  })
+}

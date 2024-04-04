@@ -9,4 +9,5 @@ resource "aws_acm_certificate" "certificate" {
   validation_method = "DNS"
 
   provider = aws.regional
+  tags     = local.tags_all
 }

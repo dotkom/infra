@@ -24,3 +24,15 @@ variable "ecr_lifecycle_policy" {
     ]
   }
 }
+
+variable "tags" {
+  description = "Tags to apply to the resources"
+  type        = map(string)
+  default     = {}
+}
+
+locals {
+  tags_all = merge(var.tags, {
+    Module = "aws-ecr-repository"
+  })
+}
