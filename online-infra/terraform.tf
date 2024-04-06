@@ -12,6 +12,10 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 5.33"
     }
+    doppler = {
+      source  = "DopplerHQ/doppler"
+      version = "~> 1.1"
+    }
   }
 }
 
@@ -20,7 +24,10 @@ provider "aws" {
 
   default_tags {
     tags = {
-      Project = "online-infra"
+      Project     = "online-infra"
+      Deployment  = "terraform"
+      Repository  = "terraform-monorepo"
+      Environment = "prod"
     }
   }
 }
@@ -31,7 +38,19 @@ provider "aws" {
 
   default_tags {
     tags = {
-      Project = "online-infra"
+      Project     = "online-infra"
+      Deployment  = "terraform"
+      Repository  = "terraform-monorepo"
+      Environment = "prod"
     }
   }
+}
+
+variable "DOPPLER_TOKEN_ALL" {
+  description = "TF Variable for all projects doppler token"
+  type        = string
+}
+
+provider "doppler" {
+  doppler_token = var.DOPPLER_TOKEN_ALL
 }
