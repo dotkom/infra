@@ -4,7 +4,9 @@ resource "aws_apigatewayv2_api" "this" {
   description   = "Main API Gateway for ${var.domain}"
 
   cors_configuration {
-    allow_origins = ["https://${var.domain}"]
+    allow_origins = concat(var.allow_origins, ["https://${var.domain}"])
+
+
     allow_methods = ["GET", "HEAD", "POST"]
     allow_headers = ["*"]
   }

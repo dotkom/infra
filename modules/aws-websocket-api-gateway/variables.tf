@@ -19,14 +19,8 @@ variable "tags" {
   default     = {}
 }
 
-variable "allow_origins" {
-  description = "List of allowed origins for CORS"
-  type        = list(string)
-  default    = []
-}
-
 locals {
   tags_all = merge(var.tags, {
-    Module = "aws-api-gateway"
+    Module = "aws-websocket-api-gateway"
   })
 }
