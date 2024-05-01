@@ -22,7 +22,7 @@ variable "tags" {
 variable "allow_origins" {
   description = "List of allowed origins for CORS"
   type        = list(string)
-  default    = []
+  default     = []
 }
 
 locals {

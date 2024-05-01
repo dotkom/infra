@@ -18,6 +18,12 @@ variable "build_command" {
   type        = string
 }
 
+variable "install_command" {
+  description = "Command to run to install project dependencies"
+  type        = string
+  default     = "pnpm install --frozen-lockfile"
+}
+
 variable "github_repository" {
   description = "GitHub repository to deploy"
   type        = string

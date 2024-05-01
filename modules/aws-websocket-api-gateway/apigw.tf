@@ -1,9 +1,9 @@
 resource "aws_apigatewayv2_api" "this" {
-  name          = var.domain
-  protocol_type = "WEBSOCKET"
+  name                       = var.domain
+  protocol_type              = "WEBSOCKET"
   route_selection_expression = "$request.body.action"
-  description   = "Websocket API Gateway for ${var.domain}"
-  tags = local.tags_all
+  description                = "Websocket API Gateway for ${var.domain}"
+  tags                       = local.tags_all
 }
 
 resource "aws_apigatewayv2_domain_name" "this" {

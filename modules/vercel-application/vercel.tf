@@ -8,8 +8,9 @@ resource "vercel_project" "this" {
     repo              = var.github_repository
   }
 
-  build_command  = var.build_command
-  root_directory = var.root_directory
+  build_command   = var.build_command
+  install_command = var.install_command
+  root_directory  = var.root_directory
 
   serverless_function_region = "arn1"
 
