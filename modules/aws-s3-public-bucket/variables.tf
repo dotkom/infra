@@ -19,6 +19,12 @@ variable "tags" {
   default     = {}
 }
 
+variable "cors_allowed_origins" {
+  description = "List of allowed origins to the bucket in additions to the domain name, which is set by default."
+  type        = list(string)
+  default     = []
+}
+
 locals {
   tags_all = merge(var.tags, {
     Module = "aws-s3-public-bucket"

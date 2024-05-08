@@ -1,5 +1,5 @@
 locals {
-  cdn_domain_name = "cdn.staging.online.ntnu.no"
+  cdn_domain_name = "cdn.online.ntnu.no"
 }
 
 module "static_bucket" {
@@ -7,7 +7,7 @@ module "static_bucket" {
   certificate_arn = module.cdn_domain_certificate.certificate_arn
   domain_name     = local.cdn_domain_name
   zone_id         = data.aws_route53_zone.online_ntnu_no.zone_id
-  cors_allowed_origins = ["http://localhost:3002"]
+  cors_allowed_origins = []
 
   depends_on = [module.cdn_domain_certificate]
 }

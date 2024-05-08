@@ -6,6 +6,7 @@ provider "registry.terraform.io/dotkom/neon" {
   constraints = "~> 0.1.1"
   hashes = [
     "h1:EQnK1qD2muAfygKiriFNilX8k3X1FjOAHJ9Upkc3PJs=",
+    "h1:PJ1RozBzraV71bAsbule6AI0ffmssCOetQu4euPQ++M=",
     "zh:0480f3b4a8e2458589200954b63eea06f233c47f6f349c9e5516af77b67c3b34",
     "zh:0ba21253c5fe844cdbe353af1b45ee4fd58e917fa727830010a92c5148099d8c",
     "zh:1430432a3775ce27327c823e7ea8fadc1f50cb144876e25d2fe81a3ef159d3f2",
@@ -29,6 +30,7 @@ provider "registry.terraform.io/hashicorp/aws" {
   constraints = "~> 5.33"
   hashes = [
     "h1:6qJfvyWObjLPoUrEC8kNVAJ1ZFFrIgzC1xprMkkoSjo=",
+    "h1:jy1tY8vUGirfcC9GwSS2Uf01GXcxnNnotvIK/WjI2WI=",
     "zh:00f40a3d9593476693a7a72d993fd289f7be374fe3f2799776c6296eb6ff890a",
     "zh:1010a9fbf55852a8da3473de4ec0f1fcf29efa85d66f61cbe2b086dbbd7747ae",
     "zh:103a5674d1eb1cff05fe35e9baa9875afd18d740868b63f9c0c25eadb5eb4eb7",
