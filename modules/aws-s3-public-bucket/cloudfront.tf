@@ -22,7 +22,6 @@ resource "aws_cloudfront_distribution" "this" {
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
     cached_methods   = ["GET", "HEAD"]
     target_origin_id = "s3"
-
     forwarded_values {
       query_string = true
 
@@ -30,6 +29,9 @@ resource "aws_cloudfront_distribution" "this" {
         forward = "none"
       }
     }
+
+    # https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-response-headers-policies.html
+    response_headers_policy_id = "60669652-455b-4ae9-85a4-c4c02393f86c" # SimpleCORS
 
     viewer_protocol_policy = "redirect-to-https"
     min_ttl                = 0
