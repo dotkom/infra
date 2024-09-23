@@ -14,7 +14,7 @@ resource "vercel_project" "this" {
 
   serverless_function_region = "arn1"
 
-  ignore_command = "if [[ $VERCEL_GIT_COMMIT_REF =~ ^renovate ]]; then exit 0; else npx turbo-ignore; fi"
+  ignore_command = "if [[ $VERCEL_GIT_COMMIT_REF =~ ^renovate ]]; then exit 0; else npx turbo-ignore --fallback=HEAD^; fi"
 }
 
 resource "vercel_project_environment_variable" "environment_variables" {
