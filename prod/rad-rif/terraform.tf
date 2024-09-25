@@ -12,9 +12,9 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 5.33"
     }
-    vercel = {
-      source  = "vercel/vercel"
-      version = "~> 1.1"
+    doppler = {
+      source  = "DopplerHQ/doppler"
+      version = "~> 1.3.0"
     }
   }
 }
@@ -46,6 +46,8 @@ provider "aws" {
   }
 }
 
-provider "vercel" {
-  team = "dotkom"
+variable "DOPPLER_TOKEN_RIF" {}
+
+provider "doppler" {
+  doppler_token = var.DOPPLER_TOKEN_RIF
 }
