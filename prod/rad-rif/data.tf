@@ -5,20 +5,6 @@ data "aws_vpc" "evergreen" {
   }
 }
 
-data "aws_subnets" "evergreen_private" {
-  filter {
-    name   = "tag:Name"
-    values = ["evergreen-prod-private-*"]
-  }
-}
-
-data "aws_security_group" "evergreen_node" {
-  filter {
-    name   = "group-name"
-    values = ["evergreen-prod-node"]
-  }
-}
-
 data "aws_lb" "evergreen_gateway" {
   name = "evergreen-prod-gateway"
 }

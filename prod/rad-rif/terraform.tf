@@ -5,16 +5,16 @@ terraform {
     region = "eu-north-1"
   }
 
-  required_version = "~> 1.7.3"
+  required_version = "~> 1.9.6"
 
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 5.33"
+      version = "~> 5.68"
     }
     doppler = {
       source  = "DopplerHQ/doppler"
-      version = "~> 1.3.0"
+      version = "~> 1.11"
     }
   }
 }
@@ -46,7 +46,9 @@ provider "aws" {
   }
 }
 
-variable "DOPPLER_TOKEN_RIF" {}
+variable "DOPPLER_TOKEN_RIF" {
+  type = string
+}
 
 provider "doppler" {
   doppler_token = var.DOPPLER_TOKEN_RIF

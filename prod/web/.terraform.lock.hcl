@@ -3,8 +3,9 @@
 
 provider "registry.terraform.io/hashicorp/aws" {
   version     = "5.68.0"
-  constraints = "~> 5.33"
+  constraints = "~> 5.33, ~> 5.68"
   hashes = [
+    "h1:C0VIWK9EIjEB17oy+sJoMprCJWrU6eQ8ZG5eWVZMejY=",
     "h1:n1X7MVAm1J+cxX4nTWTQRBx+VFQ0ma2AMJ5Ll3URlLo=",
     "zh:045f37b115a6c94a05c6a5f2aacfe4cecbaf4b40b56917ba852d988d487e94bf",
     "zh:0c388f1a94e7941cf7e6abcd8d958a3e325e513cb60affa3cac82e75c7bbbb73",
@@ -26,8 +27,9 @@ provider "registry.terraform.io/hashicorp/aws" {
 
 provider "registry.terraform.io/vercel/vercel" {
   version     = "1.14.0"
-  constraints = "~> 1.1, ~> 1.14.0"
+  constraints = "~> 1.14"
   hashes = [
+    "h1:43vitO4WJfkNTIU99Xc4l5zsJAvTN6FyZvtexRRT/no=",
     "h1:GJ69VcBi/sVATHRqItMyerhViOZosE/W5zREtZFwtIE=",
     "zh:0505d26b060c88f430a5d23d9a8a066e02280f0c4d0d025fb08c6e0651465107",
     "zh:262370b01d6a522ba6e64e0751bad5df666144df27dfe388d8a3598a0fe8ef9e",
