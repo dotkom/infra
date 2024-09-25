@@ -25,7 +25,7 @@ module "server_evergreen_service" {
       environment    = data.doppler_secrets.vengeful.map
       ports          = [{ container_port = 8000, protocol = "tcp" }]
       healthcheck = {
-        command = ["CMD-SHELL", "curl -f http://0.0.0.0:8000 || exit 1"]
+        command = ["CMD-SHELL", "curl -f http://0.0.0.0:8000/health 2>/dev/null || exit 1"]
       }
     }
   ]

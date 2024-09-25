@@ -8,7 +8,7 @@ resource "aws_lb_target_group" "this" {
   deregistration_delay = 0
 
   health_check {
-    path = "/"
+    path = "/health"
   }
 }
 

@@ -26,7 +26,7 @@ module "rif_evergreen_service" {
       ports          = [{ container_port = 3000, protocol = "tcp" }]
       healthcheck = {
         enabled = true
-        command = ["CMD-SHELL", "curl -f http://0.0.0.0:3000 || exit 1"]
+        command = ["CMD-SHELL", "curl -f http://0.0.0.0:3000/health 2>/dev/null || exit 1"]
       }
     }
   ]
