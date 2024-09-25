@@ -2,6 +2,14 @@ locals {
   rif_domain_name = "interesse.online.ntnu.no"
 }
 
+data "aws_route53_zone" "online_ntnu_no" {
+  name = "online.ntnu.no"
+}
+
+data "aws_lb" "evergreen_gateway" {
+  name = "evergreen-prod-gateway"
+}
+
 resource "aws_route53_record" "rif_alb" {
   name    = local.rif_domain_name
   type    = "A"

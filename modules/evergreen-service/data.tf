@@ -21,7 +21,3 @@ data "aws_ecs_cluster" "evergreen" {
 data "aws_iam_role" "ecs_task_execution_role" {
   name = "ecsTaskExecutionRole"
 }
-
-data "aws_route53_zone" "online_ntnu_no" {
-  name = "online.ntnu.no"
-}
