@@ -27,13 +27,13 @@ variable "service_name" {
 }
 
 variable "containers" {
-  type        = list(object({
+  type = list(object({
     container_name = string
     image          = string
     cpu            = number
     memory         = number
     essential      = bool
-    environment = map(string)
+    environment    = map(string)
     ports = list(object({
       container_port = number
       protocol       = string
