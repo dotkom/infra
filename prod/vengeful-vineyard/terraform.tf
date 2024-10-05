@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = "terraform-monorepo.online.ntnu.no"
-    key    = "vengeful-vineyard-prod.tfstate"
+    key    = "prod/vengeful-vineyard.tfstate"
     region = "eu-north-1"
   }
 

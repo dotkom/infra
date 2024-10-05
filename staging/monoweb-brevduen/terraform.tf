@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = "terraform-monorepo.online.ntnu.no"
-    key    = "brevduen-staging.tfstate"
+    key    = "staging/monoweb-brevduen.tfstate"
     region = "eu-north-1"
   }
 

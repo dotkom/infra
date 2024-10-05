@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = "terraform-monorepo.online.ntnu.no"
-    key    = "invoicification-prod.tfstate"
+    key    = "prod/monoweb-invoicification.tfstate"
     region = "eu-north-1"
   }
 
