@@ -69,7 +69,7 @@ resource "aws_launch_template" "evergreen_node" {
   name        = "evergreen-prod-node"
   description = "Evergreen node launch template"
 
-  instance_type          = "t3.medium"
+  instance_type          = "t3.small"
   image_id               = data.aws_ami.evergreen_node.id
   vpc_security_group_ids = [aws_security_group.evergreen_node.id]
 
@@ -103,8 +103,8 @@ resource "aws_launch_template" "evergreen_node" {
 resource "aws_autoscaling_group" "evergreen_node_scaling_group" {
   name = "evergreen-prod-nodes"
 
-  desired_capacity = 1
-  max_size         = 1
+  desired_capacity = 2
+  max_size         = 3
   min_size         = 1
 
   vpc_zone_identifier = aws_subnet.private[*].id

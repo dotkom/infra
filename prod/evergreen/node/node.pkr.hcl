@@ -9,7 +9,7 @@ packer {
 
 source "amazon-ebs" "amazon-linux-2" {
   ami_name      = "evergreen-node-al2023-{{timestamp}}"
-  instance_type = "t3.medium"
+  instance_type = "t3.small"
   region        = "eu-north-1"
   source_ami_filter {
     filters = {
