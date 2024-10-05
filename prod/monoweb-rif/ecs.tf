@@ -11,16 +11,16 @@ module "rif_evergreen_service" {
   target_group_rule_priority  = 1100
 
   task_count    = 1
-  task_cpu      = 256
-  task_memory   = 256
+  task_cpu      = 1024 / 8
+  task_memory   = 1024 / 8
   task_role_arn = aws_iam_role.ecs_task.arn
 
   containers = [
     {
       container_name = "monoweb-prod-rif"
       image          = data.aws_ecr_image.rif.image_uri
-      cpu            = 256
-      memory         = 256
+      cpu            = 1024 / 8
+      memory         = 1024 / 8
       essential      = true
       environment    = data.doppler_secrets.rif.map
       ports          = [{ container_port = 3000, protocol = "tcp" }]
