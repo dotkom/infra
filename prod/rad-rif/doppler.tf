@@ -1,4 +1,4 @@
 data "doppler_secrets" "rif" {
-  project = "rif"
-  config  = "prd"
+  project = "monoweb-rif"
+  config  = "prod"
 }

@@ -1,4 +1,4 @@
 data "doppler_secrets" "invoicification" {
-  project = "invoicification"
+  project = "monoweb-invoicification"
   config  = "prod"
 }
