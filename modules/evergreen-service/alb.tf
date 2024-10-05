@@ -8,7 +8,8 @@ resource "aws_lb_target_group" "this" {
   deregistration_delay = 0
 
   health_check {
-    path = "/health"
+    path    = var.alb_health_check_path
+    enabled = var.alb_health_check_enabled
   }
 }
 

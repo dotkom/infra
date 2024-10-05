@@ -83,3 +83,15 @@ variable "target_group_rule_priority" {
   type        = number
   description = "Priority of the rule"
 }
+
+variable "alb_health_check_path" {
+  type        = string
+  description = "Path to use for the health check"
+  default     = "/health"
+}
+
+variable "alb_health_check_enabled" {
+  type        = bool
+  description = "Enable health checks"
+  default     = true
+}

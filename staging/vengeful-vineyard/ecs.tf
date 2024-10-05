@@ -12,7 +12,7 @@ module "server_evergreen_service" {
 
   task_count    = 1
   task_cpu      = 1024 / 8
-  task_memory   = 1024 / 8
+  task_memory   = 1024 / 4
   task_role_arn = aws_iam_role.server.arn
 
   containers = [
@@ -20,7 +20,7 @@ module "server_evergreen_service" {
       container_name = "vengeful-vineyard-staging-server"
       image          = data.aws_ecr_image.server.image_uri
       cpu            = 1024 / 8
-      memory         = 1024 / 8
+      memory         = 1024 / 4
       essential      = true
       environment    = data.doppler_secrets.vengeful.map
       ports          = [{ container_port = 8000, protocol = "tcp" }]

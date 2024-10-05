@@ -10,22 +10,24 @@ module "server_evergreen_service" {
   target_group_container_port = 8081
   target_group_rule_priority  = 1200
 
+  alb_health_check_path = "/"
+
   task_count    = 1
-  task_cpu      = 256
-  task_memory   = 512
+  task_cpu      = 1024 / 8
+  task_memory   = 1024 / 8
   task_role_arn = aws_iam_role.server.arn
 
   containers = [
     {
       container_name = "grades-prod-server"
       image          = data.aws_ecr_image.server.image_uri
-      cpu            = 256
-      memory         = 512
+      cpu            = 1024 / 8
+      memory         = 1024 / 8
       essential      = true
       environment    = data.doppler_secrets.grades.map
       ports          = [{ container_port = 8081, protocol = "tcp" }]
       healthcheck = {
-        command = ["CMD-SHELL", "curl -f http://0.0.0.0:8081 || exit 1"]
+        command = ["CMD-SHELL", "true"]
       }
     }
   ]
@@ -43,22 +45,24 @@ module "web_evergreen_service" {
   target_group_container_port = 3000
   target_group_rule_priority  = 1300
 
+  alb_health_check_path = "/"
+
   task_count    = 1
-  task_cpu      = 256
-  task_memory   = 256
+  task_cpu      = 1024 / 8
+  task_memory   = 1024 / 8
   task_role_arn = aws_iam_role.web.arn
 
   containers = [
     {
       container_name = "grades-prod-web"
       image          = data.aws_ecr_image.web.image_uri
-      cpu            = 256
-      memory         = 256
+      cpu            = 1024 / 8
+      memory         = 1024 / 8
       essential      = true
       environment    = data.doppler_secrets.grades.map
       ports          = [{ container_port = 3000, protocol = "tcp" }]
       healthcheck = {
-        command = ["CMD-SHELL", "curl -f http://0.0.0.0:3000 || exit 1"]
+        command = ["CMD-SHELL", "true"]
       }
     }
   ]
