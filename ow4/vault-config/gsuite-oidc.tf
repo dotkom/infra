@@ -25,7 +25,7 @@ resource "vault_jwt_auth_backend" "gcp" {
   provider_config = {
     "provider"                 = "gsuite"
     "gsuite_service_account"   = data.vault_generic_secret.gsuite_service_account.data_json
-    "gsuite_admin_impersonate" = "tobias.slettemoen.kongsvik@online.ntnu.no" // Maybe create an admin account just for this
+    "gsuite_admin_impersonate" = "dotbot@online.ntnu.no"
     "fetch_groups"             = "true"
     "fetch_user_info"          = "true"
     "groups_recurse_max_depth" = "5"
