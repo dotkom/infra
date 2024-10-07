@@ -5,6 +5,7 @@ resource "aws_lambda_function" "this" {
   image_uri     = "${aws_ecr_repository.this.repository_url}:latest"
   package_type  = "Image"
   memory_size   = var.memory
+  architectures = [var.architecture]
 
   environment {
     variables = var.environment_variables

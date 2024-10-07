@@ -1,3 +1,9 @@
+variable "architecture" {
+  description = "AWS Lambda function architecture"
+  type        = string
+  default     = "x86_64"
+}
+
 variable "function_name" {
   description = "AWS Lambda function name"
   type        = string
