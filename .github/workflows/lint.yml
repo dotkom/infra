@@ -39,8 +39,6 @@ jobs:
       - run: tflint --chdir modules/aws-api-gateway -f compact
       - run: tflint --chdir modules/aws-docker-lambda -f compact
       - run: tflint --chdir modules/aws-ecr-repository -f compact
-      - run: tflint --chdir modules/aws-lightsail-certificate -f compact
-      - run: tflint --chdir modules/aws-lightsail-container-service -f compact
       - run: tflint --chdir modules/aws-s3-public-bucket -f compact
       - run: tflint --chdir modules/aws-websocket-api-gateway -f compact
       - run: tflint --chdir modules/evergreen-service -f compact
