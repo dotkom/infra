@@ -11,16 +11,16 @@ module "voting_evergreen_service" {
   target_group_rule_priority  = 1700
 
   task_count    = 1
-  task_cpu      = 1024 / 8
-  task_memory   = 1024 / 8
+  task_cpu      = 1024
+  task_memory   = 1024
   task_role_arn = aws_iam_role.voting.arn
 
   containers = [
     {
       container_name = "voting-prod-server"
       image          = data.aws_ecr_image.voting.image_uri
-      cpu            = 1024 / 8
-      memory         = 1024 / 8
+      cpu            = 1024
+      memory         = 1024
       essential      = true
       environment    = data.doppler_secrets.voting_backend.map
       ports          = [{ container_port = 4000, protocol = "tcp" }]
