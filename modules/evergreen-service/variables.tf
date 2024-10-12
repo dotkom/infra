@@ -41,6 +41,10 @@ variable "containers" {
     healthcheck = object({
       command = list(string)
     })
+    networking = optional(object({
+      hostname = optional(string)
+      links =    optional(list(string))
+    }))
   }))
   description = "List of containers to run"
 }

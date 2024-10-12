@@ -38,6 +38,8 @@ resource "aws_ecs_task_definition" "rif" {
       healthCheck = {
         command = container.healthcheck.command
       }
+      hostname = container.networking == null ? null : container.networking.hostname
+      links    = container.networking == null ? null : container.networking.links
     }
   ])
 }
