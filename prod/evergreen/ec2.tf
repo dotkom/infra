@@ -103,7 +103,7 @@ resource "aws_launch_template" "evergreen_node" {
 resource "aws_autoscaling_group" "evergreen_node_scaling_group" {
   name = "evergreen-prod-nodes"
 
-  desired_capacity = 2
+  desired_capacity = 3
   max_size         = 3
   min_size         = 1
 
@@ -111,7 +111,7 @@ resource "aws_autoscaling_group" "evergreen_node_scaling_group" {
 
   launch_template {
     id      = aws_launch_template.evergreen_node.id
-    version = "$Latest"
+    version = aws_launch_template.evergreen_node.latest_version
   }
 
   health_check_type         = "EC2"
