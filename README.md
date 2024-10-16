@@ -2,6 +2,8 @@
 
 This repository contains all of our Terraform infrastructure as code.
 
+See the [documentation](docs/) for more information.
+
 ## Repository Structure
 
 The repository is organized as a monorepo which hosts all of the Terraform modules and projects required to run
@@ -33,21 +35,3 @@ terraform fmt -recursive
 
 TFLint is automatically ran in GitHub Actions, but you can also run it locally. Note that you do not want to run TFLint
 against the `ow4/` directory, as it's legacy code and is currently not maintained.
-
-## Architectural Decisions
-
-### Separating and duplicating configuration for each environment
-
-There are a few Terraform-native ways to handle multiple environments (staging, prod, etc). The most common way is to
-use Terraform workspaces, but these prove annoying, misleading or problematic in a few ways:
-
-- Workspaces are not that obvious to use, and it's easy to forget to switch between them. You don't want to accidentally
-  apply changes to the wrong environment.
-- Not all resources want to be deployed to all environments. For example, we don't want a `vercel_project` resource for
-  an application to be deployed to both staging and prod. This makes the build queue twice as long, and it's just
-  unnecessary.
-    - One workaround is to use `count` or `for_each` to conditionally deploy resources, but this is not ideal, and is
-      not really the intended use of these features. This also requires all conditional resources to be accessed using
-      the lookup operator, which is both misleading and annoying.
-- It simplifies code significantly. Gone are the days of having ternary operators all over the place to conditionally
-  choose domain name, or instance count.
