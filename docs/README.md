@@ -22,3 +22,4 @@ when designing the monorepo and organizing the projects.
 
 - [Code Organization](code-organization.md)
 - [Bootstrapping Terraform](bootstrapping-terraform.md)
+- [Why use ECS on EC2?](why-use-ecs-on-ec2.md)
