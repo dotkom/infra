@@ -10,7 +10,7 @@ resource "aws_db_instance" "default" {
   backup_retention_period               = 30
   engine                                = "postgres"
   engine_version                        = "16.3"
-  instance_class                        = "db.t3.medium"
+  instance_class                        = "db.t4g.small"
   username                              = data.doppler_secrets.rds.map.USERNAME
   password                              = data.doppler_secrets.rds.map.PASSWORD
   vpc_security_group_ids                = [aws_security_group.sg.id]
