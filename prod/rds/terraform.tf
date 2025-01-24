@@ -16,6 +16,10 @@ terraform {
       source  = "DopplerHQ/doppler"
       version = "~> 1.11"
     }
+    postgresql = {
+      source  = "cyrilgdn/postgresql"
+      version = "1.23.0"
+    }
   }
 }
 
@@ -44,6 +48,16 @@ provider "aws" {
       Environment = "prod"
     }
   }
+}
+
+provider "postgresql" {
+  host      = aws_db_instance.default.address
+  port      = aws_db_instance.default.port
+  username  = data.doppler_secrets.rds.map.USERNAME
+  password  = data.doppler_secrets.rds.map.PASSWORD
+  database  = aws_db_instance.default.db_name
+  superuser = false
+  sslmode   = "require"
 }
 
 variable "DOPPLER_TOKEN_RDS" {
