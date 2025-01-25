@@ -21,6 +21,23 @@ resource "aws_db_instance" "default" {
   publicly_accessible                   = true
   deletion_protection                   = true
   apply_immediately                     = true
+
+  parameter_group_name = aws_db_parameter_group.default.name
+}
+
+resource "aws_db_parameter_group" "default" {
+  name   = "main-db-parameter-group"
+  family = "postgres16"
+
+  parameter {
+    name         = "max_connections"
+    value        = "1000"
+    apply_method = "pending-reboot"
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_security_group" "sg" {
