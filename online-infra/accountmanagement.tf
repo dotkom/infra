@@ -26,7 +26,7 @@ resource "aws_account_alternate_contact" "billing" {
   name          = "Mads Bårnes"
   title         = "Financial Manager"
   email_address = "mads.barnes@online.ntnu.no"
-  phone_number  = "++47 954 89 711"
+  phone_number  = "+47 954 89 711"
 }
 
 resource "aws_account_alternate_contact" "security" {
