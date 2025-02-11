@@ -55,6 +55,8 @@ jobs:
       - run: tflint --chdir prod/monoweb-web -f compact
       - run: tflint --chdir prod/rds -f compact
       - run: tflint --chdir prod/vengeful-vineyard -f compact
+      - run: tflint --chdir prod/voting-frontend -f compact
+      - run: tflint --chdir prod/voting-backend -f compact
 
       - run: tflint --chdir staging/monoweb-brevduen -f compact
       - run: tflint --chdir staging/monoweb-dashboard -f compact
