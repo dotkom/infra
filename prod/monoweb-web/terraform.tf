@@ -14,7 +14,12 @@ terraform {
     }
     vercel = {
       source  = "vercel/vercel"
-      version = "~> 1.14"
+      version = "~> 2.9"
+    }
+
+    doppler = {
+      source  = "DopplerHQ/doppler"
+      version = "~> 1.11"
     }
   }
 }
@@ -48,4 +53,13 @@ provider "aws" {
 
 provider "vercel" {
   team = "dotkom"
+}
+
+variable "DOPPLER_TOKEN_WEB_STAGING" {
+  description = "TF Variable for web staging doppler token"
+  type        = string
+}
+
+provider "doppler" {
+  doppler_token = var.DOPPLER_TOKEN_WEB_STAGING
 }

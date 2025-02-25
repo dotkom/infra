@@ -8,6 +8,13 @@ variable "domain_name" {
   type        = string
 }
 
+variable "staging_domain_name" {
+  description = "Staging domain name to assign to the project"
+  type        = string
+  nullable    = true
+  default     = null
+}
+
 variable "zone_id" {
   description = "Route53 Zone ID of DNS Zone where the custom domain is registered"
   type        = string
@@ -37,6 +44,12 @@ variable "root_directory" {
 
 variable "environment_variables" {
   description = "Environment variables to the provisioned website"
+  type        = map(string)
+  default     = {}
+}
+
+variable "staging_environment_variables" {
+  description = "Environment variables to the provisioned staging website"
   type        = map(string)
   default     = {}
 }
