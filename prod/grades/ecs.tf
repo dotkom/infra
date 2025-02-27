@@ -48,16 +48,16 @@ module "web_evergreen_service" {
   alb_health_check_path = "/"
 
   task_count    = 1
-  task_cpu      = 1024 / 8
-  task_memory   = 1024 / 8
+  task_cpu      = 1024 / 4
+  task_memory   = 1024 / 4
   task_role_arn = aws_iam_role.web.arn
 
   containers = [
     {
       container_name = "grades-prod-web"
       image          = data.aws_ecr_image.web.image_uri
-      cpu            = 1024 / 8
-      memory         = 1024 / 8
+      cpu            = 1024 / 4
+      memory         = 1024 / 4
       essential      = true
       environment    = data.doppler_secrets.grades.map
       ports          = [{ container_port = 3000, protocol = "tcp" }]
