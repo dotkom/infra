@@ -43,6 +43,7 @@ jobs:
       - run: tflint --chdir modules/evergreen-service -f compact
       - run: tflint --chdir modules/neon-project -f compact
       - run: tflint --chdir modules/vercel-application -f compact
+      - run: tflint --chdir modules/github-actions-iam -f compact
 
       - run: tflint --chdir online-infra -f compact
 
