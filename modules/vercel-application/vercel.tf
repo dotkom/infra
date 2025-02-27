@@ -24,7 +24,7 @@ resource "vercel_custom_environment" "staging" {
   description = "Staging environment"
   branch_tracking = {
     pattern = "main"
-    type = "equals"
+    type    = "equals"
   }
 }
 
@@ -34,21 +34,21 @@ resource "vercel_project_environment_variable" "environment_variables" {
   project_id = vercel_project.this.id
   key        = each.key
   value      = sensitive(each.value)
-  target     = concat(
+  target = concat(
     ["preview", "development", "production"],
     var.staging_domain_name != null ? ["staging"] : [],
   )
 }
 
 resource "vercel_project_environment_variables" "staging_environment_variables" {
-  count     = var.staging_domain_name != null ? 1 : 0
+  count      = var.staging_domain_name != null ? 1 : 0
   project_id = vercel_project.this.id
-  variables  = toset([
+  variables = toset([
     for key, value in var.staging_environment_variables : {
-      key = key
-      value = sensitive(value)
+      key                    = key
+      value                  = sensitive(value)
       custom_environment_ids = [vercel_custom_environment.staging[0].id]
-      sensitive = true
+      sensitive              = true
     }
   ])
   // custom_environment_ids = [vercel_custom_environment.staging[0].id]
@@ -60,8 +60,8 @@ resource "vercel_project_domain" "domain" {
 }
 
 resource "vercel_project_domain" "staging_domain" {
-  count     = var.staging_domain_name != null ? 1 : 0
-  domain     = aws_route53_record.staging_domain[0].name
-  project_id = vercel_project.this.id
+  count                 = var.staging_domain_name != null ? 1 : 0
+  domain                = aws_route53_record.staging_domain[0].name
+  project_id            = vercel_project.this.id
   custom_environment_id = vercel_custom_environment.staging[0].id
 }

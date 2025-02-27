@@ -43,7 +43,7 @@ variable "containers" {
     })
     networking = optional(object({
       hostname = optional(string)
-      links =    optional(list(string))
+      links    = optional(list(string))
     }))
   }))
   description = "List of containers to run"
