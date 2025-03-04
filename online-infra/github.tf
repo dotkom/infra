@@ -1,27 +1,58 @@
+module "terraform_iam" {
+  source = "../modules/github-actions-iam"
+
+  role_name        = "TerraformMonorepoInfraCIRole"
+  repository_scope = ["repo:dotkom/terraform-monorepo:*"]
+}
+
+data "aws_iam_policy_document" "ci" {
+  statement {
+    actions = [
+      "ecs:DeleteTaskDefinitions",
+      "ecs:DeregisterTaskDefinition",
+      "ecs:RegisterTaskDefinition",
+      "ecs:RunTask",
+      "ecs:StartTask",
+      "ecs:StopTask",
+      "ecs:UpdateService",
+    ]
+    effect = "Allow"
+    resources = [
+      "*"
+    ]
+  }
+}
+
+resource "aws_iam_policy" "ci" {
+  name   = "TerraformMonorepoInfraCIPolicy"
+  policy = data.aws_iam_policy_document.ci.json
+}
+
+resource "aws_iam_role_policy_attachment" "ci" {
+  policy_arn = aws_iam_policy.ci.arn
+  role       = module.terraform_iam.role.name
+}
+
+data "aws_iam_policy" "readonly_access" {
+  arn = "arn:aws:iam::aws:policy/ReadOnlyAccess"
+}
+
+resource "aws_iam_role_policy_attachment" "readonly_access" {
+  policy_arn = data.aws_iam_policy.readonly_access.arn
+  role       = module.terraform_iam.role.name
+}
+
 data "github_repository" "terraform_monorepo" {
   name = "terraform-monorepo"
 }
 
-resource "doppler_service_token" "prod" {
-  name    = "terraform-github-actions-prod"
+data "doppler_secrets" "terraform" {
   project = "terraform"
   config  = "prod"
-}
-
-resource "doppler_service_token" "staging" {
-  name    = "terraform-github-actions-staging"
-  project = "terraform"
-  config  = "staging"
 }
 
 resource "github_actions_secret" "prod_token" {
   secret_name     = "DOPPLER_PROD_SERVICE_TOKEN"
   repository      = data.github_repository.terraform_monorepo.name
-  plaintext_value = doppler_service_token.prod.key
-}
-
-resource "github_actions_secret" "staging_token" {
-  secret_name     = "DOPPLER_STAGING_SERVICE_TOKEN"
-  repository      = data.github_repository.terraform_monorepo.name
-  plaintext_value = doppler_service_token.staging.key
+  plaintext_value = data.doppler_secrets.terraform.map["GITHUB_ACTIONS_SERVICE_TOKEN"]
 }

@@ -17,11 +17,18 @@ on:
       targets:
         type: string
         description: Resource identifiers to target, comma separated
+permissions:
+  id-token: write
+  contents: read
 jobs:
   apply:
     name: Apply terraform
     runs-on: ubuntu-24.04
     steps:
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: eu-north-1
+          role-to-assume: arn:aws:iam::891459268445:role/TerraformMonorepoInfraCIRole
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
