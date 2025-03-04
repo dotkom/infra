@@ -6,6 +6,27 @@ module "terraform_iam" {
 }
 
 data "aws_iam_policy_document" "ci" {
+  # State manipulation
+  statement {
+    actions = [
+      "s3:ListObjects"
+    ]
+    effect = "Allow"
+    resources = [
+      "arn:aws:s3:::terraform-monorepo.online.ntnu.no"
+    ]
+  }
+  statement {
+    actions = [
+      "s3:GetObject",
+      "s3:PutObject"
+    ]
+    effect = "Allow"
+    resources = [
+      "arn:aws:s3:::terraform-monorepo.online.ntnu.no/*"
+    ]
+  }
+  # Select permissions onto resources that can be modified
   statement {
     actions = [
       "ecs:DeleteTaskDefinitions",
@@ -15,6 +36,8 @@ data "aws_iam_policy_document" "ci" {
       "ecs:StartTask",
       "ecs:StopTask",
       "ecs:UpdateService",
+      "ecs:TagResource",
+      "iam:PassRole",
     ]
     effect = "Allow"
     resources = [
