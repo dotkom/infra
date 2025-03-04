@@ -45,4 +45,4 @@ jobs:
           elif [[ ${{ github.event.inputs.environment }} == "prod" ]]; then
             DOPPLER_TOKEN="${{ secrets.DOPPLER_PROD_SERVICE_TOKEN }}"
           fi
-          DOPPLER_TOKEN="$DOPPLER_TOKEN" doppler run terraform apply -- -auto-approve -chdir "${{ github.event.inputs.environment }}/${{ github.event.inputs.project }}" $TARGETS
+          DOPPLER_TOKEN="$DOPPLER_TOKEN" doppler run -- terraform -chdir "${{ github.event.inputs.environment }}/${{ github.event.inputs.project }}" apply -auto-approve $TARGETS
