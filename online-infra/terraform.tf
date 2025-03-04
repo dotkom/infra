@@ -16,6 +16,10 @@ terraform {
       source  = "DopplerHQ/doppler"
       version = "~> 1.11"
     }
+    github = {
+      source  = "integrations/github"
+      version = "~> 6.0"
+    }
   }
 }
 
@@ -53,4 +57,8 @@ variable "DOPPLER_TOKEN_ALL" {
 
 provider "doppler" {
   doppler_token = var.DOPPLER_TOKEN_ALL
+}
+
+provider "github" {
+  owner = "dotkom"
 }
