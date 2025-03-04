@@ -38,11 +38,7 @@ jobs:
           for target in "${TARGET_LIST[@]}"; do
             TARGETS="$TARGETS -target $(echo $target | xargs)"
           done
-
-          DOPPLER_TOKEN=
-          if [[ ${{ github.event.inputs.environment }} == "staging" ]]; then
-            DOPPLER_TOKEN="${{ secrets.DOPPLER_STAGING_SERVICE_TOKEN }}"
-          elif [[ ${{ github.event.inputs.environment }} == "prod" ]]; then
-            DOPPLER_TOKEN="${{ secrets.DOPPLER_PROD_SERVICE_TOKEN }}"
-          fi
-          DOPPLER_TOKEN="$DOPPLER_TOKEN" doppler run -- terraform -chdir=${{ github.event.inputs.environment }}/${{ github.event.inputs.project }} apply -auto-approve $TARGETS
+          doppler run -- terraform init
+          doppler run -- terraform -chdir=${{ github.event.inputs.environment }}/${{ github.event.inputs.project }} apply -auto-approve $TARGETS
+        env:
+          DOPPLER_TOKEN: ${{ secrets.DOPPLER_PROD_SERVICE_TOKEN }}
