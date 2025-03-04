@@ -30,6 +30,8 @@ jobs:
           terraform_version: "1.9.6"
       - uses: dopplerhq/cli-action@v2
       - run: doppler setup --no-interactive
+        env:
+          DOPPLER_TOKEN: ${{ secrets.DOPPLER_PROD_SERVICE_TOKEN }}
       - run: |
           TARGETS=""
           IFS="," read -ra TARGET_LIST <<< "${{ github.event.inputs.targets }}"
