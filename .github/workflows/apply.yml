@@ -32,13 +32,16 @@ jobs:
       - run: doppler setup --no-interactive
         env:
           DOPPLER_TOKEN: ${{ secrets.DOPPLER_PROD_SERVICE_TOKEN }}
-      - run: |
+      - name: Configure and apply terraform
+        run: |
           TARGETS=""
           IFS="," read -ra TARGET_LIST <<< "${{ github.event.inputs.targets }}"
           for target in "${TARGET_LIST[@]}"; do
             TARGETS="$TARGETS -target $(echo $target | xargs)"
           done
-          doppler run -- terraform init
-          doppler run -- terraform -chdir=${{ github.event.inputs.environment }}/${{ github.event.inputs.project }} apply -auto-approve $TARGETS
+          pushd "${{ github.event.inputs.environment }}/${{ github.event.inputs.project }}"
+            doppler run -- terraform init
+            doppler run -- terraform apply -auto-approve $TARGETS
+          popd
         env:
           DOPPLER_TOKEN: ${{ secrets.DOPPLER_PROD_SERVICE_TOKEN }}
