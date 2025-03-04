@@ -1,0 +1,46 @@
+name: Terraform apply
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        description: Which environment to apply in
+        default: staging
+        required: true
+        options:
+          - staging
+          - prod
+      project:
+        type: string
+        description: Terraform sub-project to apply in
+        required: true
+      targets:
+        type: string
+        description: Resource identifiers to target, comma separated
+jobs:
+  apply:
+    name: Apply terraform
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: "1.9.6"
+      - uses: dopplerhq/cli-action@v2
+      - run: doppler setup --no-interactive
+      - run: |
+          TARGETS=""
+          IFS="," read -ra TARGET_LIST <<< "${{ github.event.inputs.targets }}"
+          for target in "${TARGET_LIST[@]}"; do
+            TARGETS="$TARGETS -target $(echo $target | xargs)"
+          done
+
+          DOPPLER_TOKEN=
+          if [[ ${{ github.event.inputs.environment }} == "staging" ]]; then
+            DOPPLER_TOKEN="${{ secrets.DOPPLER_STAGING_SERVICE_TOKEN }}"
+          elif [[ ${{ github.event.inputs.environment }} == "prod" ]]; then
+            DOPPLER_TOKEN="${{ secrets.DOPPLER_PROD_SERVICE_TOKEN }}"
+          fi
+          DOPPLER_TOKEN="$DOPPLER_TOKEN" doppler run terraform apply -- -auto-approve -chdir "${{ github.event.inputs.environment }}/${{ github.event.inputs.project }}" $TARGETS
