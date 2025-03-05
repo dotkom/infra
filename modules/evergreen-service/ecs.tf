@@ -1,4 +1,9 @@
-resource "aws_ecs_task_definition" "rif" {
+moved {
+  from = aws_ecs_task_definition.rif
+  to   = aws_ecs_task_definition.this
+}
+
+resource "aws_ecs_task_definition" "this" {
   family = var.service_name
 
   requires_compatibilities = ["EC2"]
@@ -44,7 +49,12 @@ resource "aws_ecs_task_definition" "rif" {
   ])
 }
 
-resource "aws_ecs_service" "rif" {
+moved {
+  from = aws_ecs_service.rif
+  to   = aws_ecs_service.this
+}
+
+resource "aws_ecs_service" "this" {
   name = var.service_name
 
   desired_count = var.task_count
