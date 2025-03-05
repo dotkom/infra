@@ -1,5 +1,4 @@
 locals {
-  vengeful_project_name       = "vengeful-vineyard-prod"
   vengeful_domain_name        = "vinstraff.no"
   vengeful_server_domain_name = "api.vinstraff.no"
 }

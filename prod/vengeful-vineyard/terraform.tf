@@ -16,10 +16,6 @@ terraform {
       source  = "DopplerHQ/doppler"
       version = "~> 1.11"
     }
-    neon = {
-      source  = "dotkom/neon"
-      version = "~> 0.1.1"
-    }
   }
 }
 
@@ -58,5 +54,3 @@ variable "DOPPLER_TOKEN_VENGEFUL" {
 provider "doppler" {
   doppler_token = var.DOPPLER_TOKEN_VENGEFUL
 }
-
-provider "neon" {}

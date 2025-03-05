@@ -12,10 +12,6 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 5.68"
     }
-    neon = {
-      source  = "dotkom/neon"
-      version = "~> 0.1.1"
-    }
   }
 }
 
@@ -45,5 +41,3 @@ provider "aws" {
     }
   }
 }
-
-provider "neon" {}
