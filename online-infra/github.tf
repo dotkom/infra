@@ -69,13 +69,18 @@ data "github_repository" "terraform_monorepo" {
   name = "terraform-monorepo"
 }
 
-data "doppler_secrets" "terraform" {
-  project = "terraform"
-  config  = "prod"
-}
-
 resource "github_actions_secret" "prod_token" {
   secret_name     = "DOPPLER_PROD_SERVICE_TOKEN"
   repository      = data.github_repository.terraform_monorepo.name
   plaintext_value = data.doppler_secrets.terraform.map["GITHUB_ACTIONS_SERVICE_TOKEN"]
+}
+
+data "github_repository" "monoweb" {
+  name = "monoweb"
+}
+
+resource "github_actions_secret" "monoweb_workflow_token" {
+  repository      = data.github_repository.monoweb.name
+  secret_name     = "TERRAFORM_WORKFLOW_TOKEN"
+  plaintext_value = data.doppler_secrets.terraform.map["TERRAFORM_GITHUB_TOKEN"]
 }
