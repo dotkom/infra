@@ -22,14 +22,14 @@ module "evergreen_service" {
       cpu            = 1024 / 4
       memory         = 1024 / 4
       essential      = true
-      environment    = {
-      SENDER_EMAIL = "henrik.skog@online.ntnu.no"
-      RECIPIENT_EMAIL = "henrikskog01@gmail.com"
-      CC_RECIPIENT_EMAILS = "henrik.skog@gmail.com"
-      STORAGE_BUCKET = "s3://receipt-archive.online.ntnu.no"
-      EMAIL_ENABLED = "true",
+      environment = {
+        SENDER_EMAIL        = "henrik.skog@online.ntnu.no"
+        RECIPIENT_EMAIL     = "henrikskog01@gmail.com"
+        CC_RECIPIENT_EMAILS = "henrik.skog@gmail.com"
+        STORAGE_BUCKET      = "s3://receipt-archive.online.ntnu.no"
+        EMAIL_ENABLED       = "true",
       }
-      ports          = [{ container_port = 5000, protocol = "tcp" }]
+      ports = [{ container_port = 5000, protocol = "tcp" }]
       healthcheck = {
         command = ["CMD-SHELL", "curl -f http://0.0.0.0:5000/health 2>/dev/null || exit 1"]
       }
