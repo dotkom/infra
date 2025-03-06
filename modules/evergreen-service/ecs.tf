@@ -61,7 +61,7 @@ resource "aws_ecs_service" "this" {
   cluster       = data.aws_ecs_cluster.evergreen.id
 
   force_new_deployment = true
-  task_definition      = aws_ecs_task_definition.rif.arn
+  task_definition      = aws_ecs_task_definition.this.arn
 
   launch_type         = "EC2"
   scheduling_strategy = "REPLICA"
