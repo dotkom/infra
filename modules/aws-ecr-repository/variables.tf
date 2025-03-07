@@ -36,3 +36,9 @@ locals {
     Module = "aws-ecr-repository"
   })
 }
+
+variable "force_delete" {
+  description = "Allow the ECR repository to be deleted even if it contains images"
+  type        = bool
+  default     = false
+}
