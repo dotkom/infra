@@ -11,6 +11,7 @@ data "aws_iam_policy_document" "kvittering_frontend_ci_role" {
   statement {
     actions = [
       "s3:PutObject",
+      "s3:ListBucket",
       "cloudfront:CreateInvalidation",
     ]
     effect = "Allow"
