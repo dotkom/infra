@@ -28,6 +28,7 @@ module "evergreen_service" {
         CC_RECIPIENT_EMAILS = "henrik.skog@gmail.com"
         STORAGE_BUCKET      = "s3://receipt-archive.online.ntnu.no"
         EMAIL_ENABLED       = "true",
+        ENVIRONMENT         = "prod"
       }
       ports = [{ container_port = 5000, protocol = "tcp" }]
       healthcheck = {
