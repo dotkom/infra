@@ -28,6 +28,7 @@ module "evergreen_service" {
         SENDER_EMAIL        = "kvitteringsbot@online.ntnu.no"
         STORAGE_BUCKET      = "kvittering-archive.online.ntnu.no"
         EMAIL_ENABLED       = "true",
+        ENVIRONMENT         = "prod"
       }
       ports = [{ container_port = 5000, protocol = "tcp" }]
       healthcheck = {
