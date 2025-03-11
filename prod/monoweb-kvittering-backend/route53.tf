@@ -21,3 +21,13 @@ resource "aws_route53_record" "kvittering_alb" {
     evaluate_target_health = false
   }
 }
+
+# Switch to this for routing traffic to old kvittering website
+# Uncomment this and comment out the above record to switch to Vercel
+# resource "aws_route53_record" "kvittering_vercel" {
+#   name    = "kvittering.online.ntnu.no"
+#   type    = "CNAME"
+#   zone_id = data.aws_route53_zone.online_ntnu_no.zone_id
+#   ttl     = 300
+#   records = ["cname.vercel-dns.com."]
+# }
