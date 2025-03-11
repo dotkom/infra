@@ -30,8 +30,8 @@ module "evergreen_service" {
         EMAIL_ENABLED       = "true",
         ENVIRONMENT         = "prod",
 
-        TEST_SENDER_EMAIL   = "henrik.skog@online.ntnu.no"
-        TEST_RECIPIENT_EMAIL = "henrik.skog@online.ntnu.no"
+        TEST_SENDER_EMAIL        = "henrik.skog@online.ntnu.no"
+        TEST_RECIPIENT_EMAIL     = "henrik.skog@online.ntnu.no"
         TEST_CC_RECIPIENT_EMAILS = ""
       }
       ports = [{ container_port = 5000, protocol = "tcp" }]
