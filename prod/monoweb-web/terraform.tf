@@ -16,10 +16,13 @@ terraform {
       source  = "vercel/vercel"
       version = "~> 2.9"
     }
-
     doppler = {
       source  = "DopplerHQ/doppler"
       version = "~> 1.11"
+    }
+    sentry = {
+      source  = "jianyuan/sentry"
+      version = "0.14.3"
     }
   }
 }
@@ -63,3 +66,5 @@ variable "DOPPLER_TOKEN_WEB_STAGING" {
 provider "doppler" {
   doppler_token = var.DOPPLER_TOKEN_WEB_STAGING
 }
+
+provider "sentry" {}
