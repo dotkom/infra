@@ -16,6 +16,10 @@ terraform {
       source  = "vercel/vercel"
       version = "~> 2.9"
     }
+    sentry = {
+      source  = "jianyuan/sentry"
+      version = "0.14.3"
+    }
   }
 }
 
@@ -49,3 +53,5 @@ provider "aws" {
 provider "vercel" {
   team = "dotkom"
 }
+
+provider "sentry" {}
