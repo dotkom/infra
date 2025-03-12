@@ -23,7 +23,7 @@ module "evergreen_service" {
       memory         = 1024 / 4
       essential      = true
       environment    = data.doppler_secrets.monoweb_kvittering_backend.map
-      ports = [{ container_port = 5000, protocol = "tcp" }]
+      ports          = [{ container_port = 5000, protocol = "tcp" }]
       healthcheck = {
         # command = ["CMD-SHELL", "curl -f http://0.0.0.0:5000/health 2>/dev/null || exit 1"] 
 
