@@ -1,4 +1,4 @@
 data "doppler_secrets" "monoweb_kvittering_backend" {
-  project = "kvittering-backend"
-  config  = "prd"
+  project = "monoweb-kvittering-backend"
+  config  = "prod"
 }
