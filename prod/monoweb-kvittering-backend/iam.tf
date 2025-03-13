@@ -42,6 +42,14 @@ data "aws_iam_policy_document" "task_role_permissions" {
       "arn:aws:ses:eu-north-1:891459268445:identity/online.ntnu.no"
     ]
   }
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "cloudwatch:PutMetricData",
+    ]
+    resources = ["*"]
+  }
 }
 
 resource "aws_iam_policy" "task_role_policy" {
