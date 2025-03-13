@@ -24,21 +24,36 @@ jobs:
   apply:
     name: Apply terraform
     runs-on: ubuntu-24.04
+    env:
+      DOPPLER_IDENTITY_ID: 2c64100e-5052-4a75-ac12-e03eb8575e70 # ID from service account identity in Doppler
     steps:
-      - uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-region: eu-north-1
-          role-to-assume: arn:aws:iam::891459268445:role/TerraformMonorepoInfraCIRole
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
       - uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: "1.9.6"
-      - uses: dopplerhq/cli-action@v2
-      - run: doppler setup --no-interactive
-        env:
-          DOPPLER_TOKEN: ${{ secrets.DOPPLER_PROD_SERVICE_TOKEN }}
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: eu-north-1
+          role-to-assume: arn:aws:iam::891459268445:role/TerraformMonorepoInfraCIRole
+      # Authenticate Doppler CLI using oidc
+      - name: Get OIDC Token
+        uses: actions/github-script@v7
+        id: get-oidc-token
+        with:
+          script: |
+            const id_token = await core.getIDToken()
+            core.setOutput('oidc_token', id_token)
+      - uses: dopplerhq/cli-action@v3
+      - name: Doppler OIDC login
+        run: |
+          doppler oidc login \
+            --api-host https://api.doppler.com \
+            --scope=. \
+            --identity=${{ env.DOPPLER_IDENTITY_ID }} \
+            --token=${{ steps.get-oidc-token.outputs.oidc_token }}
+      - run: doppler setup -p terraform -c prod
       - name: Configure and apply terraform
         run: |
           TARGETS=""
@@ -50,5 +65,3 @@ jobs:
             doppler run -- terraform init
             doppler run -- terraform apply -auto-approve $TARGETS
           popd
-        env:
-          DOPPLER_TOKEN: ${{ secrets.DOPPLER_PROD_SERVICE_TOKEN }}
