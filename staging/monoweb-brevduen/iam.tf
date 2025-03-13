@@ -27,7 +27,7 @@ data "aws_iam_policy_document" "brevduen_permissions" {
 }
 
 resource "aws_iam_policy" "brevduen_permissions" {
-  name   = "MonowebProdBrevduenPermissions"
+  name   = "MonowebStagingBrevduenPermissions"
   policy = data.aws_iam_policy_document.brevduen_permissions.json
 }
 
