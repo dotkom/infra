@@ -5,5 +5,5 @@ resource "sentry_project" "monoweb_brevduen" {
   name = "Monoweb Brevduen"
   slug = "monoweb-brevduen"
 
-  platform = "node-awslambda"
+  platform = "node"
 }
