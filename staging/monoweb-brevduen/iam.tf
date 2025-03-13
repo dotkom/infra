@@ -33,5 +33,5 @@ resource "aws_iam_policy" "brevduen_permissions" {
 
 resource "aws_iam_role_policy_attachment" "brevduen_permissions" {
   role       = aws_iam_role.brevduen.name
-  policy_arn = aws_iam_policy.brevduen_ci_role.arn
+  policy_arn = aws_iam_policy.brevduen_permissions.arn
 }
