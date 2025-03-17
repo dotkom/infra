@@ -62,4 +62,3 @@ jobs:
       - run: tflint --chdir staging/monoweb-dashboard -f compact
       - run: tflint --chdir staging/monoweb-rpc -f compact
       - run: tflint --chdir staging/monoweb-web -f compact
-      - run: tflint --chdir staging/vengeful-vineyard -f compact
