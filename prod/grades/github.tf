@@ -29,6 +29,7 @@ data "aws_iam_policy_document" "web_ci_role" {
       "ecr:InitiateLayerUpload",
       "ecr:PutImage",
       "ecr:UploadLayerPart",
+      "ecr:BatchGetImage",
     ]
     effect = "Allow"
     resources = [
