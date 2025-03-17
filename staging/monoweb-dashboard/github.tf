@@ -1,7 +1,7 @@
 module "dashboard_ci" {
   source = "../../modules/github-actions-iam"
 
-  role_name = "MonowebProdDashboardCIRole"
+  role_name = "MonowebStagingDashboardCIRole"
   repository_scope = [
     "repo:dotkom/monoweb:*"
   ]
@@ -20,6 +20,7 @@ data "aws_iam_policy_document" "dashboard_ci_role" {
       "ecr:InitiateLayerUpload",
       "ecr:PutImage",
       "ecr:UploadLayerPart",
+      "ecr:BatchGetImage"
     ]
     effect = "Allow"
     resources = [
@@ -29,7 +30,7 @@ data "aws_iam_policy_document" "dashboard_ci_role" {
 }
 
 resource "aws_iam_policy" "dashboard_ci_role" {
-  name   = "MonowebProdDashboardCIPolicy"
+  name   = "MonowebStagingDashboardCIPolicy"
   policy = data.aws_iam_policy_document.dashboard_ci_role.json
 }
 
