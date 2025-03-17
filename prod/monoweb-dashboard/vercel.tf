@@ -1,5 +1,5 @@
 locals {
-  dashboard_domain_name = "dashboard.online.ntnu.no"
+  dashboard_domain_name = "dashboard-edge.online.ntnu.no"
 }
 
 module "vercel_project" {
