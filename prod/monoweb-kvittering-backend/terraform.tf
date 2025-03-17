@@ -50,13 +50,13 @@ provider "aws" {
   }
 }
 
-variable "DOPPLER_TOKEN_MONOWEB_KVITTERING_BACKEND" {
-  description = "TF Variable for the monoweb-kvittering-backend doppler token"
+variable "DOPPLER_TOKEN_ALL" {
+  description = "TF Variable for the doppler service token"
   type        = string
 }
 
 provider "doppler" {
-  doppler_token = var.DOPPLER_TOKEN_MONOWEB_KVITTERING_BACKEND
+  doppler_token = var.DOPPLER_TOKEN_ALL
 }
 
 provider "sentry" {}

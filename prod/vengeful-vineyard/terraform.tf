@@ -50,13 +50,13 @@ provider "aws" {
   }
 }
 
-variable "DOPPLER_TOKEN_VENGEFUL" {
-  description = "TF Variable for the vengeful doppler token"
+variable "DOPPLER_TOKEN_ALL" {
+  description = "TF Variable for the doppler service token"
   type        = string
 }
 
 provider "doppler" {
-  doppler_token = var.DOPPLER_TOKEN_VENGEFUL
+  doppler_token = var.DOPPLER_TOKEN_ALL
 }
 
 provider "sentry" {}

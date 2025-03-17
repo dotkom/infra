@@ -46,11 +46,11 @@ provider "aws" {
   }
 }
 
-variable "DOPPLER_TOKEN_MONOWEB_RPC" {
-  description = "TF Variable for the monoweb-rpc doppler token"
+variable "DOPPLER_TOKEN_ALL" {
+  description = "TF Variable for the doppler service token"
   type        = string
 }
 
 provider "doppler" {
-  doppler_token = var.DOPPLER_TOKEN_MONOWEB_RPC
+  doppler_token = var.DOPPLER_TOKEN_ALL
 }

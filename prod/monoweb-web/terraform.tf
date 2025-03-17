@@ -58,13 +58,13 @@ provider "vercel" {
   team = "dotkom"
 }
 
-variable "DOPPLER_TOKEN_WEB_STAGING" {
-  description = "TF Variable for web staging doppler token"
+variable "DOPPLER_TOKEN_ALL" {
+  description = "TF Variable for the doppler service token"
   type        = string
 }
 
 provider "doppler" {
-  doppler_token = var.DOPPLER_TOKEN_WEB_STAGING
+  doppler_token = var.DOPPLER_TOKEN_ALL
 }
 
 provider "sentry" {}

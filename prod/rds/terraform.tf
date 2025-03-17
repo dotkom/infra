@@ -60,11 +60,11 @@ provider "postgresql" {
   sslmode   = "require"
 }
 
-variable "DOPPLER_TOKEN_RDS" {
-  description = "TF Variable for the rds doppler token"
+variable "DOPPLER_TOKEN_ALL" {
+  description = "TF Variable for the doppler service token"
   type        = string
 }
 
 provider "doppler" {
-  doppler_token = var.DOPPLER_TOKEN_RDS
+  doppler_token = var.DOPPLER_TOKEN_ALL
 }

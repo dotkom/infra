@@ -50,12 +50,13 @@ provider "aws" {
   }
 }
 
-variable "DOPPLER_TOKEN_RIF" {
-  type = string
+variable "DOPPLER_TOKEN_ALL" {
+  description = "TF Variable for the doppler service token"
+  type        = string
 }
 
 provider "doppler" {
-  doppler_token = var.DOPPLER_TOKEN_RIF
+  doppler_token = var.DOPPLER_TOKEN_ALL
 }
 
 provider "sentry" {}

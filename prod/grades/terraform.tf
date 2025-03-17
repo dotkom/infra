@@ -46,11 +46,11 @@ provider "aws" {
   }
 }
 
-variable "DOPPLER_TOKEN_GRADES" {
-  description = "TF Variable for the grades doppler token"
+variable "DOPPLER_TOKEN_ALL" {
+  description = "TF Variable for the doppler service token"
   type        = string
 }
 
 provider "doppler" {
-  doppler_token = var.DOPPLER_TOKEN_GRADES
+  doppler_token = var.DOPPLER_TOKEN_ALL
 }
