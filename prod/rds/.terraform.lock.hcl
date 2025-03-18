@@ -6,6 +6,7 @@ provider "registry.terraform.io/cyrilgdn/postgresql" {
   constraints = "1.23.0"
   hashes = [
     "h1:LxsIoeIkUhmlyKUwhWKLsRBm6Ho4j/O4GdxgxjfOm0A=",
+    "h1:gOHS9VLOuUNTe1yGp/HqGEUuSSdguowO1QjezLIxIJc=",
     "zh:0bea106d7ffc7058a9a03359d2d973dd2b10f357a751ad7ead34e919af963adc",
     "zh:11758b27f60d74232a8a1b2cf2053ab27a7f060f1893fa773353425f295f6085",
     "zh:278605be3cbcaab43598ccbe1152956691e7af41e3c105034b1f3f643362f8c0",
@@ -27,6 +28,7 @@ provider "registry.terraform.io/dopplerhq/doppler" {
   version     = "1.11.0"
   constraints = "~> 1.11"
   hashes = [
+    "h1:jQMfZ7/mCvqPi4abIIpxLtIL5cXqr9+Nu8yrcDrxk3k=",
     "h1:zgWnoZoE8ECNGJNu0Ks0ULydZTwihZJibQRcNeHXS7o=",
     "zh:029623dc072278e044a3bb4400dd9178e68297ebdd1973fe9383cd4f8b94faf2",
     "zh:1dffe72269f707a22eae3c906ffdd72c3b1ffbd04633c0afc4c085a920b4c21f",
@@ -50,6 +52,7 @@ provider "registry.terraform.io/hashicorp/aws" {
   constraints = "~> 5.68"
   hashes = [
     "h1:BkYfMmqLJIqLkLLz9sDRWJR5+7GCXTocNPN4pIHkhQo=",
+    "h1:jhd5O5o0CfZCNEwwN0EiDAzb7ApuFrtxJqa6HXW4EKE=",
     "zh:0dea6843836e926d33469b48b948744079023816d16a2ff7666bcfb6aa3522d4",
     "zh:195fa9513f75800a0d62797ebec75ee73e9b8c28d713fe9b63d3b1d1eec129b3",
     "zh:1ed92f3961715bf0e024bcde3c12dfbdc50b00c1f8a43cc00802cfc45a256208",

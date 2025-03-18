@@ -1,0 +1,5 @@
+[tools]
+terragrunt = "latest"
+
+[env]
+AWS_PROFILE = "dotkom"
