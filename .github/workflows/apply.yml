@@ -62,6 +62,6 @@ jobs:
             TARGETS="$TARGETS -target $(echo $target | xargs)"
           done
           pushd "${{ github.event.inputs.environment }}/${{ github.event.inputs.project }}"
-            doppler run -- terraform init
-            doppler run -- terraform apply -auto-approve $TARGETS
+            doppler run -- terraform init -input=false
+            doppler run -- terraform apply -auto-approve -input=false $TARGETS
           popd
