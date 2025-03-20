@@ -38,4 +38,3 @@ resource "aws_iam_role_policy_attachment" "rpc_ci_role" {
   policy_arn = aws_iam_policy.rpc_ci_role.arn
   role       = module.rpc_ci.role.name
 }
-
