@@ -3,3 +3,8 @@ module "server_ecr_image" {
 
   ecr_repository_name = "monoweb/prod/web"
 }
+
+data "aws_ecr_image" "web" {
+  repository_name = module.server_ecr_image.ecr_repository_name
+  most_recent     = true
+}
