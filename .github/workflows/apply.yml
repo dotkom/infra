@@ -53,7 +53,12 @@ jobs:
             --scope=. \
             --identity=${{ env.DOPPLER_IDENTITY_ID }} \
             --token=${{ steps.get-oidc-token.outputs.oidc_token }}
+
       - run: doppler setup -p terraform -c prod
+        if: github.event.inputs.environment == 'prod'
+      - run: doppler setup -p terraform -c staging
+        if: github.event.inputs.environment == 'staging'
+
       - name: Configure and apply terraform
         run: |
           TARGETS=""
