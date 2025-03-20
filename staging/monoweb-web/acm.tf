@@ -8,3 +8,14 @@ module "cdn_domain_certificate" {
     aws.regional = aws.us-east-1
   }
 }
+
+module "web_domain_certificate" {
+  source = "../../modules/aws-acm-certificate"
+
+  domain  = local.web_domain_name
+  zone_id = data.aws_route53_zone.online_ntnu_no.zone_id
+
+  providers = {
+    aws.regional = aws
+  }
+}
