@@ -12,7 +12,20 @@ terraform {
       source  = "grafana/grafana"
       version = "~> 3.22"
     }
+    doppler = {
+      source  = "DopplerHQ/doppler"
+      version = "~> 1.11"
+    }
   }
+}
+
+variable "DOPPLER_TOKEN_ALL" {
+  description = "TF Variable for the doppler service token"
+  type        = string
+}
+
+provider "doppler" {
+  doppler_token = var.DOPPLER_TOKEN_ALL
 }
 
 variable "GRAFANA_SERVICE_ACCOUNT_TOKEN" {

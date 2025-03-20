@@ -14,10 +14,6 @@ resource "grafana_organization_preferences" "dotkom" {
   week_start = "monday"
 }
 
-resource "grafana_team" "dotkom" {
-  name = "dotkom"
-}
-
 output "service_token" {
   value     = grafana_service_account_token.terraform.key
   sensitive = true
