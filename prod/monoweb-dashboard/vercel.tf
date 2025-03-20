@@ -8,6 +8,6 @@ module "vercel_project" {
   project_name   = "dashboard"
   domain_name    = local.vercel_domain_name
   zone_id        = data.aws_route53_zone.online_ntnu_no.zone_id
-  build_command  = "cd ../.. && pnpm build:dashboard"
+  build_command  = "cd ../.. && pnpm -F @dotkomonline/dashboard build"
   root_directory = "apps/dashboard"
 }
