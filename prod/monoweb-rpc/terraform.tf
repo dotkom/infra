@@ -20,6 +20,10 @@ terraform {
       source  = "jianyuan/sentry"
       version = "0.14.3"
     }
+    grafana = {
+      source  = "grafana/grafana"
+      version = "~> 3.22"
+    }
   }
 }
 
@@ -60,3 +64,19 @@ provider "doppler" {
 }
 
 provider "sentry" {}
+
+variable "GRAFANA_SERVICE_ACCOUNT_TOKEN" {
+  description = "Grafana service account token"
+  type        = string
+}
+
+variable "GRAFANA_MASTER_POLICY_TOKEN" {
+  description = "Grafana policy token"
+  type        = string
+}
+
+provider "grafana" {
+  url                       = "https://dotkomonline.grafana.net"
+  auth                      = var.GRAFANA_SERVICE_ACCOUNT_TOKEN
+  cloud_access_policy_token = var.GRAFANA_MASTER_POLICY_TOKEN
+}
