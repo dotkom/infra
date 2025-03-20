@@ -47,6 +47,7 @@ jobs:
 
       - run: tflint --chdir prod/evergreen -f compact
       - run: tflint --chdir prod/grades -f compact
+      - run: tflint --chdir prod/grafana -f compact
       - run: tflint --chdir prod/monoweb-brevduen -f compact
       - run: tflint --chdir prod/monoweb-dashboard -f compact
       - run: tflint --chdir prod/monoweb-invoicification -f compact
