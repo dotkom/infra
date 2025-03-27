@@ -1,0 +1,70 @@
+ui:
+  title: Linjeforeningen Online Status
+  description: Statusovervåkning av tjenester knyttet til Linjeforeningen Online
+  header: Linjeforeningen Online
+  logo: https://web.online.ntnu.no/online-logo.svg
+  link: https://online.ntnu.no
+endpoints:
+  # Monoweb Staging endpoints
+  - name: Monoweb Web (staging)
+    group: staging
+    url: https://staging.online.ntnu.no/health
+    conditions:
+      - "[STATUS] == 200"
+  - name: Monoweb Dashboard (staging)
+    group: staging
+    url: https://dashboard.staging.online.ntnu.no/health
+    conditions:
+      - "[STATUS] == 200"
+  - name: Monoweb RPC (staging)
+    group: staging
+    url: https://rpc.staging.online.ntnu.no/health
+    conditions:
+      - "[STATUS] == 200"
+  - name: Monoweb Brevduen (staging)
+    group: staging
+    url: https://brevduen.staging.online.ntnu.no/health
+    conditions:
+      - "[STATUS] == 200"
+  - name: Monoweb Interesseskjema (staging)
+    group: staging
+    url: https://interesse.staging.online.ntnu.no/health
+    conditions:
+      - "[STATUS] == 200"
+  - name: Monoweb Fakturaskjema (staging)
+    group: staging
+    url: https://faktura.staging.online.ntnu.no/health
+    conditions:
+      - "[STATUS] == 200"
+
+  # Monoweb Production endpoints
+  - name: Monoweb Web (prod)
+    group: prod
+    url: https://web.online.ntnu.no/health
+    conditions:
+      - "[STATUS] == 200"
+  - name: Monoweb Dashboard (prod)
+    group: prod
+    url: https://dashboard.online.ntnu.no/health
+    conditions:
+      - "[STATUS] == 200"
+  - name: Monoweb RPC (prod)
+    group: prod
+    url: https://rpc.online.ntnu.no/health
+    conditions:
+      - "[STATUS] == 200"
+  - name: Monoweb Brevduen (prod)
+    group: prod
+    url: https://brevduen.online.ntnu.no/health
+    conditions:
+      - "[STATUS] == 200"
+  - name: Monoweb Interesseskjema (prod)
+    group: prod
+    url: https://interesse.online.ntnu.no/health
+    conditions:
+      - "[STATUS] == 200"
+  - name: Monoweb Fakturaskjema (prod)
+    group: prod
+    url: https://faktura.online.ntnu.no/health
+    conditions:
+      - "[STATUS] == 200"

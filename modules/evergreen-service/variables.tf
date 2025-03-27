@@ -38,9 +38,9 @@ variable "containers" {
       container_port = number
       protocol       = string
     }))
-    healthcheck = object({
+    healthcheck = optional(object({
       command = list(string)
-    })
+    }))
     networking = optional(object({
       hostname = optional(string)
       links    = optional(list(string))

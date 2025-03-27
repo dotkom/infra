@@ -40,7 +40,7 @@ resource "aws_ecs_task_definition" "this" {
           awslogs-stream-prefix = "ecs/evergreen/${var.service_name}"
         }
       }
-      healthCheck = {
+      healthCheck = container.healthcheck == null ? null : {
         command = container.healthcheck.command
       }
       hostname = container.networking == null ? null : container.networking.hostname
