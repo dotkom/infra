@@ -91,3 +91,13 @@ resource "aws_route53_record" "domain" {
     zone_id                = aws_cloudfront_distribution.this.hosted_zone_id
   }
 }
+
+# Switch to this for routing traffic to old kvittering website
+# Uncomment this and comment out the above record to switch to Vercel
+# resource "aws_route53_record" "kvittering_vercel" {
+#   name    = "kvittering.online.ntnu.no"
+#   type    = "CNAME"
+#   zone_id = data.aws_route53_zone.zone.id
+#   ttl     = 10
+#   records = ["cname.vercel-dns.com."]
+# }

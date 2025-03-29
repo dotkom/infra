@@ -25,10 +25,7 @@ module "evergreen_service" {
       environment    = data.doppler_secrets.monoweb_kvittering_backend.map
       ports          = [{ container_port = 5000, protocol = "tcp" }]
       healthcheck = {
-        # command = ["CMD-SHELL", "curl -f http://0.0.0.0:5000/health 2>/dev/null || exit 1"] 
-
-        # Should have healthcheck, but I can't get the healthcheck working. It just fails even though the service is running. Don't know why.
-        command = ["CMD-SHELL", "exit 0"]
+        command = ["CMD-SHELL", "curl -f http://0.0.0.0:5000/health 2>/dev/null || exit 1"]
       }
     }
   ]
