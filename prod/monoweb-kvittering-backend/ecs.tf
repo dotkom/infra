@@ -11,16 +11,16 @@ module "evergreen_service" {
   target_group_rule_priority  = 1800
 
   task_count    = 1
-  task_cpu      = 1024 / 4
-  task_memory   = 1024 / 4
+  task_cpu      = 1024 / 2
+  task_memory   = 1024 / 2
   task_role_arn = aws_iam_role.task_role.arn
 
   containers = [
     {
       container_name = "monoweb-prod-${local.project_name}"
       image          = data.aws_ecr_image.this.image_uri
-      cpu            = 1024 / 4
-      memory         = 1024 / 4
+      cpu            = 1024 / 2
+      memory         = 1024 / 2
       essential      = true
       environment    = data.doppler_secrets.monoweb_kvittering_backend.map
       ports          = [{ container_port = 5000, protocol = "tcp" }]
