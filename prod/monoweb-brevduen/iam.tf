@@ -13,7 +13,7 @@ data "aws_iam_policy_document" "brevduen" {
 }
 
 resource "aws_iam_role" "brevduen" {
-  name               = "MonowebProdBrevduenECSTaskRole"
+  name               = "monoweb-prod-brevduen-ecs-task-role"
   assume_role_policy = data.aws_iam_policy_document.brevduen.json
 }
 
@@ -27,7 +27,7 @@ data "aws_iam_policy_document" "brevduen_permissions" {
 }
 
 resource "aws_iam_policy" "brevduen_permissions" {
-  name   = "MonowebProdBrevduenPermissions"
+  name   = "monoweb-prod-brevduen-permissions"
   policy = data.aws_iam_policy_document.brevduen_permissions.json
 }
 

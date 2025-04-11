@@ -1,36 +1,21 @@
 module "kvittering_backend_ci" {
   source = "../../modules/github-actions-iam"
 
-  role_name = "MonowebProdKvitteringBackendCIRole"
+  role_name = "monoweb-prod-kvittering-backend-ci-role"
   repository_scope = [
     "repo:dotkom/monoweb:*"
   ]
 }
 
 data "aws_iam_policy_document" "kvittering_backend_ci_role" {
-  statement {
-    actions   = ["ecr:GetAuthorizationToken"]
-    effect    = "Allow"
-    resources = ["*"]
-  }
-  statement {
-    actions = [
-      "ecr:BatchCheckLayerAvailability",
-      "ecr:CompleteLayerUpload",
-      "ecr:InitiateLayerUpload",
-      "ecr:PutImage",
-      "ecr:UploadLayerPart",
-      "ecr:BatchGetImage"
-    ]
-    effect = "Allow"
-    resources = [
-      module.server_ecr_image.ecr_repository_arn
-    ]
-  }
+  source_policy_documents = [
+    module.server_ecr_image.deployment_permission_set.json,
+    module.evergreen_service.deployment_permission_set.json,
+  ]
 }
 
 resource "aws_iam_policy" "kvittering_backend_ci_role" {
-  name   = "MonowebProdKvitteringBackendCIPolicy"
+  name   = "monoweb-prod-kvittering-backend-ci-policy"
   policy = data.aws_iam_policy_document.kvittering_backend_ci_role.json
 }
 

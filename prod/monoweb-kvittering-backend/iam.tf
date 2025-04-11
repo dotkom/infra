@@ -1,5 +1,5 @@
 resource "aws_iam_role" "task_role" {
-  name               = "MonowebProdKvitteringBackendECSTaskRole"
+  name               = "monoweb-prod-kvittering-backend-ecs-task-role"
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
 }
 
@@ -53,7 +53,7 @@ data "aws_iam_policy_document" "task_role_permissions" {
 }
 
 resource "aws_iam_policy" "task_role_policy" {
-  name   = "MonowebProdKvitteringBackendPermissions"
+  name   = "monoweb-prod-kvittering-backend-permissions"
   policy = data.aws_iam_policy_document.task_role_permissions.json
 }
 

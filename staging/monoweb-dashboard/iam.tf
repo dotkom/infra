@@ -13,6 +13,6 @@ data "aws_iam_policy_document" "dashboard" {
 }
 
 resource "aws_iam_role" "dashboard" {
-  name               = "MonowebStagingDashboardECSTaskRole"
+  name               = "monoweb-staging-dashboard-ecs-task-role"
   assume_role_policy = data.aws_iam_policy_document.dashboard.json
 }

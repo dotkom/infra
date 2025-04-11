@@ -13,6 +13,6 @@ data "aws_iam_policy_document" "dashboard" {
 }
 
 resource "aws_iam_role" "dashboard" {
-  name               = "MonowebProdDashboardECSTaskRole"
+  name               = "monoweb-prod-dashboard-ecs-task-role"
   assume_role_policy = data.aws_iam_policy_document.dashboard.json
 }

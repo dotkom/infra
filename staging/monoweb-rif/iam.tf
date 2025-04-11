@@ -13,6 +13,6 @@ data "aws_iam_policy_document" "ecs_task_execution" {
 }
 
 resource "aws_iam_role" "ecs_task" {
-  name               = "MonowebStagingRifECSTaskRole"
+  name               = "monoweb-staging-rif-ecs-task-role"
   assume_role_policy = data.aws_iam_policy_document.ecs_task_execution.json
 }

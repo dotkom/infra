@@ -1,7 +1,7 @@
 module "web_ci" {
   source = "../../modules/github-actions-iam"
 
-  role_name = "MonowebStagingWebCIRole"
+  role_name = "monoweb-staging-web-ci-role"
   repository_scope = [
     "repo:dotkom/monoweb:*"
   ]
@@ -15,7 +15,7 @@ data "aws_iam_policy_document" "web_ci_role" {
 }
 
 resource "aws_iam_policy" "web_ci_role" {
-  name   = "MonowebStagingWebCIPolicy"
+  name   = "monoweb-staging-web-ci-policy"
   policy = data.aws_iam_policy_document.web_ci_role.json
 }
 

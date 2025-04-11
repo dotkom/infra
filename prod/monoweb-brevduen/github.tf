@@ -1,36 +1,21 @@
 module "brevduen_ci" {
   source = "../../modules/github-actions-iam"
 
-  role_name = "MonowebProdBrevduenCIRole"
+  role_name = "monoweb-prod-brevduen-ci-role"
   repository_scope = [
     "repo:dotkom/monoweb:*"
   ]
 }
 
 data "aws_iam_policy_document" "brevduen_ci_role" {
-  statement {
-    actions   = ["ecr:GetAuthorizationToken"]
-    effect    = "Allow"
-    resources = ["*"]
-  }
-  statement {
-    actions = [
-      "ecr:BatchCheckLayerAvailability",
-      "ecr:CompleteLayerUpload",
-      "ecr:InitiateLayerUpload",
-      "ecr:PutImage",
-      "ecr:UploadLayerPart",
-      "ecr:BatchGetImage"
-    ]
-    effect = "Allow"
-    resources = [
-      module.server_ecr_image.ecr_repository_arn
-    ]
-  }
+  source_policy_documents = [
+    module.server_ecr_image.deployment_permission_set.json,
+    module.brevduen_evergreen_service.deployment_permission_set.json,
+  ]
 }
 
 resource "aws_iam_policy" "brevduen_ci_role" {
-  name   = "MonowebProdBrevduenCIPolicy"
+  name   = "monoweb-prod-brevduen-ci-policy"
   policy = data.aws_iam_policy_document.brevduen_ci_role.json
 }
 

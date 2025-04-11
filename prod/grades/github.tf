@@ -1,7 +1,7 @@
 module "server_ci" {
   source = "../../modules/github-actions-iam"
 
-  role_name = "GradesProdServerCIRole"
+  role_name = "grades-prod-server-ci-role"
   repository_scope = [
     "repo:dotkom/gradestats:*",
   ]
@@ -10,36 +10,21 @@ module "server_ci" {
 module "web_ci" {
   source = "../../modules/github-actions-iam"
 
-  role_name = "GradesProdWebCIRole"
+  role_name = "grades-prod-web-ci-role"
   repository_scope = [
     "repo:dotkom/gradestats-app:*",
   ]
 }
 
 data "aws_iam_policy_document" "web_ci_role" {
-  statement {
-    actions   = ["ecr:GetAuthorizationToken"]
-    effect    = "Allow"
-    resources = ["*"]
-  }
-  statement {
-    actions = [
-      "ecr:BatchCheckLayerAvailability",
-      "ecr:CompleteLayerUpload",
-      "ecr:InitiateLayerUpload",
-      "ecr:PutImage",
-      "ecr:UploadLayerPart",
-      "ecr:BatchGetImage",
-    ]
-    effect = "Allow"
-    resources = [
-      module.web_ecr_image.ecr_repository_arn
-    ]
-  }
+  source_policy_documents = [
+    module.server_ecr_image.deployment_permission_set.json,
+    module.web_ecr_image.deployment_permission_set.json,
+  ]
 }
 
 resource "aws_iam_policy" "web_ci_policy" {
-  name   = "GradesProdWebCIPolicy"
+  name   = "grades-prod-web-ci-policy"
   policy = data.aws_iam_policy_document.web_ci_role.json
 }
 
