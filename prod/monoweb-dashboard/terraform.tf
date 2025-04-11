@@ -12,10 +12,6 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 5.68"
     }
-    vercel = {
-      source  = "vercel/vercel"
-      version = "~> 2.9"
-    }
     sentry = {
       source  = "jianyuan/sentry"
       version = "0.14.3"
@@ -56,10 +52,6 @@ provider "aws" {
       Environment = "prod"
     }
   }
-}
-
-provider "vercel" {
-  team = "dotkom"
 }
 
 provider "sentry" {}
