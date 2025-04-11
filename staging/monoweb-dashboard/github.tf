@@ -8,25 +8,10 @@ module "dashboard_ci" {
 }
 
 data "aws_iam_policy_document" "dashboard_ci_role" {
-  statement {
-    actions   = ["ecr:GetAuthorizationToken"]
-    effect    = "Allow"
-    resources = ["*"]
-  }
-  statement {
-    actions = [
-      "ecr:BatchCheckLayerAvailability",
-      "ecr:CompleteLayerUpload",
-      "ecr:InitiateLayerUpload",
-      "ecr:PutImage",
-      "ecr:UploadLayerPart",
-      "ecr:BatchGetImage"
-    ]
-    effect = "Allow"
-    resources = [
-      module.server_ecr_image.ecr_repository_arn
-    ]
-  }
+  source_policy_documents = [
+    module.server_ecr_image.deployment_permission_set.json,
+    module.dashboard_evergreen_service.deployment_permission_set.json,
+  ]
 }
 
 resource "aws_iam_policy" "dashboard_ci_role" {

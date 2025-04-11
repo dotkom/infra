@@ -8,25 +8,10 @@ module "ci" {
 }
 
 data "aws_iam_policy_document" "ci_role" {
-  statement {
-    actions   = ["ecr:GetAuthorizationToken"]
-    effect    = "Allow"
-    resources = ["*"]
-  }
-  statement {
-    actions = [
-      "ecr:BatchCheckLayerAvailability",
-      "ecr:CompleteLayerUpload",
-      "ecr:InitiateLayerUpload",
-      "ecr:PutImage",
-      "ecr:UploadLayerPart",
-      "ecr:BatchGetImage"
-    ]
-    effect = "Allow"
-    resources = [
-      module.server_image.ecr_repository_arn
-    ]
-  }
+  source_policy_documents = [
+    module.server_image.deployment_permission_set.json,
+    module.invoicification_evergreen_service.deployment_permission_set.json,
+  ]
 }
 
 resource "aws_iam_policy" "ci_role" {

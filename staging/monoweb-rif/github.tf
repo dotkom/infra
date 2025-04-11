@@ -8,25 +8,10 @@ module "rif_ci" {
 }
 
 data "aws_iam_policy_document" "rif_ci_role" {
-  statement {
-    actions   = ["ecr:GetAuthorizationToken"]
-    effect    = "Allow"
-    resources = ["*"]
-  }
-  statement {
-    actions = [
-      "ecr:BatchCheckLayerAvailability",
-      "ecr:CompleteLayerUpload",
-      "ecr:InitiateLayerUpload",
-      "ecr:PutImage",
-      "ecr:UploadLayerPart",
-      "ecr:BatchGetImage"
-    ]
-    effect = "Allow"
-    resources = [
-      module.rif_ecr_image.ecr_repository_arn
-    ]
-  }
+  source_policy_documents = [
+    module.rif_ecr_image.deployment_permission_set.json,
+    module.rif_evergreen_service.deployment_permission_set.json,
+  ]
 }
 
 resource "aws_iam_policy" "rif_ci_role" {

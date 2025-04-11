@@ -13,3 +13,8 @@ output "ecr_repository_id" {
 output "ecr_repository_name" {
   value = aws_ecr_repository.this.name
 }
+
+output "deployment_permission_set" {
+  description = "Minimal requirements required to push to this repository using AWS Actions"
+  value       = data.aws_iam_policy_document.deployment_requirements
+}
