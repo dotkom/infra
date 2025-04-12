@@ -1,7 +1,7 @@
 module "ci" {
   source = "../../modules/github-actions-iam"
 
-  role_name = "MonowebProdInvoicificationCIRole"
+  role_name = "monoweb-prod-invoicification-ci-role"
   repository_scope = [
     "repo:dotkom/monoweb:*"
   ]
