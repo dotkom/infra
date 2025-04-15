@@ -99,3 +99,15 @@ variable "alb_health_check_enabled" {
   description = "Enable health checks"
   default     = true
 }
+
+variable "alb_health_check_timeout" {
+  type        = number
+  description = "Timeout for the health check"
+  default     = 5
+}
+
+variable "alb_health_check_grace_period_seconds" {
+  type        = number
+  description = "Grace period for the health check"
+  default     = 60
+}

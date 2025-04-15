@@ -66,6 +66,8 @@ resource "aws_ecs_service" "this" {
   launch_type         = "EC2"
   scheduling_strategy = "REPLICA"
 
+  health_check_grace_period_seconds = var.alb_health_check_grace_period_seconds
+
   load_balancer {
     container_name   = var.target_group_container_name
     container_port   = var.target_group_container_port

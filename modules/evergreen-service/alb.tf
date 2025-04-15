@@ -10,6 +10,7 @@ resource "aws_lb_target_group" "this" {
   health_check {
     path    = var.alb_health_check_path
     enabled = var.alb_health_check_enabled
+    timeout = var.alb_health_check_timeout
   }
 }
 
