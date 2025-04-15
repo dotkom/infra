@@ -7,3 +7,10 @@ resource "sentry_project" "monoweb_dashboard" {
 
   platform = "javascript-nextjs"
 }
+
+resource "sentry_key" "monoweb_dashboard" {
+  organization = sentry_project.monoweb_dashboard.organization
+  project      = sentry_project.monoweb_dashboard.slug
+
+  name = "Production"
+}

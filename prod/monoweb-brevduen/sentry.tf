@@ -7,3 +7,10 @@ resource "sentry_project" "monoweb_brevduen" {
 
   platform = "node"
 }
+
+resource "sentry_key" "monoweb_brevduen" {
+  organization = sentry_project.monoweb_brevduen.organization
+  project      = sentry_project.monoweb_brevduen.slug
+
+  name = "Production"
+}

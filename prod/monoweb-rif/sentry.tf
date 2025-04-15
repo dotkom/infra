@@ -7,3 +7,10 @@ resource "sentry_project" "monoweb_rif" {
 
   platform = "javascript-nextjs"
 }
+
+resource "sentry_key" "monoweb_rif" {
+  organization = sentry_project.monoweb_rif.organization
+  project      = sentry_project.monoweb_rif.slug
+
+  name = "Production"
+}
