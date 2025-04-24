@@ -28,6 +28,7 @@ provider "registry.terraform.io/grafana/grafana" {
   version     = "3.22.0"
   constraints = "~> 3.22"
   hashes = [
+    "h1:CI3/xf9zl5UNM/o8J5zW8kE8zhhnYuxC069Gw9VHZ7k=",
     "h1:QkcWxzlrq48wLhmjlwzY+/J1wKDuY5nYr4HjJG3LXQU=",
     "zh:0fa82f4184eed746bc6b94f960e9d656aa41158ba9d2c16c4ebf3caf043fb81d",
     "zh:27c11edb836a3e83807be18edf5fcd8ec623955da41af3c88ced2155f869adb7",

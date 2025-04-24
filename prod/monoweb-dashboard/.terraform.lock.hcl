@@ -5,6 +5,7 @@ provider "registry.terraform.io/dopplerhq/doppler" {
   version     = "1.15.0"
   constraints = "~> 1.11"
   hashes = [
+    "h1:EnnN0E5q8LNY8L35uAXrak6wjMRTA7IeNnFlpWZI0QU=",
     "h1:fk66x0/aU4ItcoouLlL/FQeoRtHan44uuTT++JuFiRk=",
     "zh:02892226d29a7c96d71bb10105e9516e86fe09d8a13d20baee7ee94a085bddb2",
     "zh:1c63811c91180c6692192b09dd1fe6ab89174fbc4fdebae989cf07e20faa5b1b",
@@ -27,6 +28,7 @@ provider "registry.terraform.io/grafana/grafana" {
   version     = "3.22.0"
   constraints = "~> 3.22"
   hashes = [
+    "h1:CI3/xf9zl5UNM/o8J5zW8kE8zhhnYuxC069Gw9VHZ7k=",
     "h1:QkcWxzlrq48wLhmjlwzY+/J1wKDuY5nYr4HjJG3LXQU=",
     "zh:0fa82f4184eed746bc6b94f960e9d656aa41158ba9d2c16c4ebf3caf043fb81d",
     "zh:27c11edb836a3e83807be18edf5fcd8ec623955da41af3c88ced2155f869adb7",
@@ -53,7 +55,7 @@ provider "registry.terraform.io/grafana/grafana" {
 
 provider "registry.terraform.io/hashicorp/aws" {
   version     = "5.90.1"
-  constraints = "~> 5.68"
+  constraints = "~> 5.33, ~> 5.68"
   hashes = [
     "h1:7sZNaEqNHFDdSbcN9Kmq1siEPWGBbmxzpiTzWctd1GE=",
     "h1:UOHmE27LtoyisllsyLEb+10+wpvHDgXBPYdMn5kKfdA=",

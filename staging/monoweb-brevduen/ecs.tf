@@ -1,12 +1,12 @@
 module "brevduen_evergreen_service" {
   source = "../../modules/evergreen-service"
 
-  service_name = "monoweb-staging-brevduen"
+  service_name = "monoweb-stg-brevduen"
 
   acm_certificate_arns = [module.brevduen_domain_certificate.certificate_arn]
   domain_names         = [local.brevduen_domain_name]
 
-  target_group_container_name = "monoweb-staging-brevduen"
+  target_group_container_name = "monoweb-stg-brevduen"
   target_group_container_port = 4433
   target_group_rule_priority  = 1850
 
@@ -17,7 +17,7 @@ module "brevduen_evergreen_service" {
 
   containers = [
     {
-      container_name = "monoweb-staging-brevduen"
+      container_name = "monoweb-stg-brevduen"
       image          = data.aws_ecr_image.brevduen.image_uri
       cpu            = 1024 / 8
       memory         = 1024 / 8

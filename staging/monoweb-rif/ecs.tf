@@ -1,12 +1,12 @@
 module "rif_evergreen_service" {
   source = "../../modules/evergreen-service"
 
-  service_name = "monoweb-staging-rif"
+  service_name = "monoweb-stg-rif"
 
   acm_certificate_arns = [module.rif_certificate.certificate_arn]
   domain_names         = [local.rif_domain_name]
 
-  target_group_container_name = "monoweb-staging-rif"
+  target_group_container_name = "monoweb-stg-rif"
   target_group_container_port = 3000
   target_group_rule_priority  = 1150
 
@@ -17,7 +17,7 @@ module "rif_evergreen_service" {
 
   containers = [
     {
-      container_name = "monoweb-staging-rif"
+      container_name = "monoweb-stg-rif"
       image          = data.aws_ecr_image.rif.image_uri
       cpu            = 1024 / 8
       memory         = 1024 / 8

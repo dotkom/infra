@@ -1,12 +1,12 @@
 module "invoicification_evergreen_service" {
   source = "../../modules/evergreen-service"
 
-  service_name = "monoweb-prod-invoicification"
+  service_name = "monoweb-prd-invoicification"
 
   acm_certificate_arns = [module.invoicification_certificate.certificate_arn]
   domain_names         = [local.invoicification_domain_name]
 
-  target_group_container_name = "monoweb-prod-invoicification"
+  target_group_container_name = "monoweb-prd-invoicification"
   target_group_container_port = 3000
   target_group_rule_priority  = 1500
 
@@ -17,7 +17,7 @@ module "invoicification_evergreen_service" {
 
   containers = [
     {
-      container_name = "monoweb-prod-invoicification"
+      container_name = "monoweb-prd-invoicification"
       image          = data.aws_ecr_image.invoicification.image_uri
       cpu            = 1024 / 8
       memory         = 1024 / 8

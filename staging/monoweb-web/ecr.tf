@@ -1,7 +1,7 @@
 module "server_ecr_image" {
   source = "../../modules/aws-ecr-repository"
 
-  ecr_repository_name = "monoweb/staging/web"
+  ecr_repository_name = "monoweb/stg/web"
 }
 
 data "aws_ecr_image" "web" {

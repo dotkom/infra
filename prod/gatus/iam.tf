@@ -13,6 +13,6 @@ data "aws_iam_policy_document" "gatus" {
 }
 
 resource "aws_iam_role" "gatus" {
-  name               = "monoweb-prod-gatus-ecs-task-role"
+  name               = "monoweb-prd-gatus-ecs-task-role"
   assume_role_policy = data.aws_iam_policy_document.gatus.json
 }

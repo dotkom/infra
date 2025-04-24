@@ -1,7 +1,7 @@
 module "rpc_ci" {
   source = "../../modules/github-actions-iam"
 
-  role_name = "monoweb-staging-rpc-ci-role"
+  role_name = "monoweb-stg-rpc-ci-role"
   repository_scope = [
     "repo:dotkom/monoweb:*"
   ]
@@ -15,7 +15,7 @@ data "aws_iam_policy_document" "rpc_ci_role" {
 }
 
 resource "aws_iam_policy" "rpc_ci_role" {
-  name   = "monoweb-staging-rpc-ci-policy"
+  name   = "monoweb-stg-rpc-ci-policy"
   policy = data.aws_iam_policy_document.rpc_ci_role.json
 }
 

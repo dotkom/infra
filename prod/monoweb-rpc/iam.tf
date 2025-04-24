@@ -1,5 +1,5 @@
 resource "aws_iam_role" "rpc" {
-  name               = "monoweb-prod-rpc-ecs-task-role"
+  name               = "monoweb-prd-rpc-ecs-task-role"
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
 }
 
@@ -31,7 +31,7 @@ data "aws_iam_policy_document" "rpc_permissions" {
 }
 
 resource "aws_iam_policy" "rpc_permissions" {
-  name   = "monoweb-prod-rpc-permissions"
+  name   = "monoweb-prd-rpc-permissions"
   policy = data.aws_iam_policy_document.rpc_permissions.json
 }
 

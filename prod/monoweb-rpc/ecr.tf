@@ -1,7 +1,7 @@
 module "server_ecr_image" {
   source = "../../modules/aws-ecr-repository"
 
-  ecr_repository_name = "monoweb/prod/rpc"
+  ecr_repository_name = "monoweb/prd/rpc"
 }
 
 data "aws_ecr_image" "rpc" {

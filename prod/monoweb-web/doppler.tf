@@ -1,6 +1,6 @@
 data "doppler_secrets" "monoweb_web" {
   project = "monoweb-web"
-  config  = "prod"
+  config  = "prd"
 }
 
 resource "doppler_secret" "sentry_dsn" {

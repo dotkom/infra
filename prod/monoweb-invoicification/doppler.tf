@@ -1,6 +1,6 @@
 data "doppler_secrets" "invoicification" {
   project = "monoweb-invoicification"
-  config  = "prod"
+  config  = "prd"
 }
 
 resource "doppler_secret" "sentry_dsn" {

@@ -5,7 +5,7 @@ locals {
 
 resource "grafana_cloud_access_policy" "grafana" {
   region       = "prod-eu-north-0"
-  name         = "monoweb-prod-dashboard"
+  name         = "monoweb-prd-dashboard"
   display_name = "Grafana Cloud Access for Monoweb Dashboard"
 
   scopes = [
@@ -32,7 +32,7 @@ resource "grafana_cloud_access_policy" "grafana" {
 resource "grafana_cloud_access_policy_token" "grafana" {
   region           = "prod-eu-north-0"
   access_policy_id = grafana_cloud_access_policy.grafana.policy_id
-  name             = "monoweb-prod-dashboard"
+  name             = "monoweb-prd-dashboard"
   display_name     = "Grafana Cloud Access for Monoweb Dashboard"
 }
 

@@ -1,7 +1,7 @@
 module "kvittering_backend_ci" {
   source = "../../modules/github-actions-iam"
 
-  role_name = "monoweb-prod-kvittering-backend-ci-role"
+  role_name = "monoweb-prd-kvittering-backend-ci-role"
   repository_scope = [
     "repo:dotkom/monoweb:*"
   ]
@@ -15,7 +15,7 @@ data "aws_iam_policy_document" "kvittering_backend_ci_role" {
 }
 
 resource "aws_iam_policy" "kvittering_backend_ci_role" {
-  name   = "monoweb-prod-kvittering-backend-ci-policy"
+  name   = "monoweb-prd-kvittering-backend-ci-policy"
   policy = data.aws_iam_policy_document.kvittering_backend_ci_role.json
 }
 

@@ -1,7 +1,7 @@
 module "dashboard_ci" {
   source = "../../modules/github-actions-iam"
 
-  role_name = "monoweb-staging-dashboard-ci-role"
+  role_name = "monoweb-stg-dashboard-ci-role"
   repository_scope = [
     "repo:dotkom/monoweb:*"
   ]
@@ -15,7 +15,7 @@ data "aws_iam_policy_document" "dashboard_ci_role" {
 }
 
 resource "aws_iam_policy" "dashboard_ci_role" {
-  name   = "monoweb-staging-dashboard-ci-policy"
+  name   = "monoweb-stg-dashboard-ci-policy"
   policy = data.aws_iam_policy_document.dashboard_ci_role.json
 }
 

@@ -1,7 +1,7 @@
 module "server_ecr_image" {
   source = "../../modules/aws-ecr-repository"
 
-  ecr_repository_name = "monoweb/prod/${local.project_name}"
+  ecr_repository_name = "monoweb/prd/kvittering-backend"
 }
 
 data "aws_ecr_image" "this" {

@@ -1,7 +1,7 @@
 module "splash_frontend_ci" {
   source = "../../modules/github-actions-iam"
 
-  role_name = "monoweb-prod-splash-frontend-ci-role"
+  role_name = "monoweb-prd-splash-frontend-ci-role"
   repository_scope = [
     "repo:dotkom/monoweb:*"
   ]
@@ -22,7 +22,7 @@ data "aws_iam_policy_document" "splash_frontend_ci_role" {
 }
 
 resource "aws_iam_policy" "splash_frontend_ci_role" {
-  name   = "monoweb-prod-splash-frontend-ci-policy"
+  name   = "monoweb-prd-splash-frontend-ci-policy"
   policy = data.aws_iam_policy_document.splash_frontend_ci_role.json
 }
 

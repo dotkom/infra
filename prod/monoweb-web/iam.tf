@@ -13,6 +13,6 @@ data "aws_iam_policy_document" "web" {
 }
 
 resource "aws_iam_role" "web" {
-  name               = "monoweb-prod-web-ecs-task-role"
+  name               = "monoweb-prd-web-ecs-task-role"
   assume_role_policy = data.aws_iam_policy_document.web.json
 }

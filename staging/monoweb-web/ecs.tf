@@ -1,12 +1,12 @@
 module "web_evergreen_service" {
   source = "../../modules/evergreen-service"
 
-  service_name = "monoweb-staging-web"
+  service_name = "monoweb-stg-web"
 
   acm_certificate_arns = [module.web_domain_certificate.certificate_arn]
   domain_names         = [local.web_domain_name]
 
-  target_group_container_name = "monoweb-staging-web"
+  target_group_container_name = "monoweb-stg-web"
   target_group_container_port = 3000
   target_group_rule_priority  = 900
 
@@ -17,7 +17,7 @@ module "web_evergreen_service" {
 
   containers = [
     {
-      container_name = "monoweb-staging-web"
+      container_name = "monoweb-stg-web"
       image          = data.aws_ecr_image.web.image_uri
       cpu            = 1024 / 8
       memory         = 1024 / 8

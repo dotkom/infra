@@ -13,6 +13,6 @@ data "aws_iam_policy_document" "invoicification" {
 }
 
 resource "aws_iam_role" "invoicification" {
-  name               = "monoweb-staging-invoicification-ecs-task-role"
+  name               = "monoweb-stg-invoicification-ecs-task-role"
   assume_role_policy = data.aws_iam_policy_document.invoicification.json
 }

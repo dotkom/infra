@@ -5,6 +5,6 @@ module "server_ecr_image" {
 }
 
 data "aws_ecr_image" "server" {
-  repository_name = module.server_ecr_image.ecr_repository_name
+  repository_name = "grades/stg/server"
   most_recent     = true
 }

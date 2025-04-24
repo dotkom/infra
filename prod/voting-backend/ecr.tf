@@ -6,6 +6,6 @@ module "server_ecr_image" {
 
 # tflint-ignore: terraform_unused_declarations
 data "aws_ecr_image" "voting" {
-  repository_name = module.server_ecr_image.ecr_repository_name
+  repository_name = "grades/stg/server"
   most_recent     = true
 }

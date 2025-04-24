@@ -13,6 +13,6 @@ data "aws_iam_policy_document" "rpc" {
 }
 
 resource "aws_iam_role" "rpc" {
-  name               = "monoweb-staging-rpc-ecs-task-role"
+  name               = "monoweb-stg-rpc-ecs-task-role"
   assume_role_policy = data.aws_iam_policy_document.rpc.json
 }

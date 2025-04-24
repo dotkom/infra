@@ -1,7 +1,7 @@
 module "rif_ci" {
   source = "../../modules/github-actions-iam"
 
-  role_name = "monoweb-prod-rif-ci-role"
+  role_name = "monoweb-prd-rif-ci-role"
   repository_scope = [
     "repo:dotkom/monoweb:*"
   ]
@@ -15,7 +15,7 @@ data "aws_iam_policy_document" "rif_ci_role" {
 }
 
 resource "aws_iam_policy" "rif_ci_role" {
-  name   = "monoweb-prod-rif-ci-policy"
+  name   = "monoweb-prd-rif-ci-policy"
   policy = data.aws_iam_policy_document.rif_ci_role.json
 }
 

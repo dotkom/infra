@@ -70,7 +70,7 @@ jobs:
           platforms: linux/amd64
           content: .
           file: apps/rpc/Dockerfile
-          tags: 891459268445.dkr.ecr.eu-north-1.amazonaws.com/monoweb/staging/rpc:latest
+          tags: 891459268445.dkr.ecr.eu-north-1.amazonaws.com/monoweb/stg/rpc:latest
           push: true
       - uses: actions/github-script@v7
         with:
@@ -82,7 +82,7 @@ jobs:
               workflow_id: 'apply.yml',
               ref: 'main',
               inputs: {
-                environment: 'staging',
+                environment: 'stg',
                 project: 'monoweb-rpc',
                 targets: 'module.rpc_evergreen_service',
               },

@@ -1,7 +1,7 @@
 module "ecr_image" {
   source = "../../modules/aws-ecr-repository"
 
-  ecr_repository_name = "monoweb/prod/invoicification"
+  ecr_repository_name = "monoweb/prd/invoicification"
 }
 
 moved {

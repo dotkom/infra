@@ -1,6 +1,6 @@
 data "doppler_secrets" "rif" {
   project = "monoweb-rif"
-  config  = "staging"
+  config  = "stg"
 }
 
 resource "doppler_secret" "sentry_dsn" {

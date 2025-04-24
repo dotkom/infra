@@ -5,7 +5,7 @@ module "server_ecr_image" {
 }
 
 data "aws_ecr_image" "server" {
-  repository_name = module.server_ecr_image.ecr_repository_name
+  repository_name = "grades/stg/server"
   most_recent     = true
 }
 
@@ -16,6 +16,6 @@ module "web_ecr_image" {
 }
 
 data "aws_ecr_image" "web" {
-  repository_name = module.web_ecr_image.ecr_repository_name
+  repository_name = "grades/stg/server"
   most_recent     = true
 }

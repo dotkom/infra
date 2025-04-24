@@ -1,6 +1,6 @@
 data "doppler_secrets" "invoicification" {
   project = "monoweb-invoicification"
-  config  = "staging"
+  config  = "stg"
 }
 
 resource "doppler_secret" "sentry_dsn" {

@@ -1,12 +1,12 @@
 module "rpc_evergreen_service" {
   source = "../../modules/evergreen-service"
 
-  service_name = "monoweb-staging-rpc"
+  service_name = "monoweb-stg-rpc"
 
   acm_certificate_arns = [module.rpc_domain_certificate.certificate_arn]
   domain_names         = [local.rpc_domain_name]
 
-  target_group_container_name = "monoweb-staging-rpc"
+  target_group_container_name = "monoweb-stg-rpc"
   target_group_container_port = 4444
   target_group_rule_priority  = 1550
 
@@ -19,7 +19,7 @@ module "rpc_evergreen_service" {
 
   containers = [
     {
-      container_name = "monoweb-staging-rpc"
+      container_name = "monoweb-stg-rpc"
       image          = data.aws_ecr_image.rpc.image_uri
       cpu            = 1024 / 8
       memory         = 1024 / 8

@@ -1,12 +1,12 @@
 module "dashboard_evergreen_service" {
   source = "../../modules/evergreen-service"
 
-  service_name = "monoweb-staging-dashboard"
+  service_name = "monoweb-stg-dashboard"
 
   acm_certificate_arns = [module.dashboard_domain_certificate.certificate_arn]
   domain_names         = [local.dashboard_domain_name]
 
-  target_group_container_name = "monoweb-staging-dashboard"
+  target_group_container_name = "monoweb-stg-dashboard"
   target_group_container_port = 3000
   target_group_rule_priority  = 1650
 
@@ -17,7 +17,7 @@ module "dashboard_evergreen_service" {
 
   containers = [
     {
-      container_name = "monoweb-staging-dashboard"
+      container_name = "monoweb-stg-dashboard"
       image          = data.aws_ecr_image.dashboard.image_uri
       cpu            = 1024 / 8
       memory         = 1024 / 8

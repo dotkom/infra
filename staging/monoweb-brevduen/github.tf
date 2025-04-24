@@ -1,7 +1,7 @@
 module "brevduen_ci" {
   source = "../../modules/github-actions-iam"
 
-  role_name = "monoweb-staging-brevduen-ci-role"
+  role_name = "monoweb-stg-brevduen-ci-role"
   repository_scope = [
     "repo:dotkom/monoweb:*"
   ]
@@ -15,7 +15,7 @@ data "aws_iam_policy_document" "brevduen_ci_role" {
 }
 
 resource "aws_iam_policy" "brevduen_ci_role" {
-  name   = "monoweb-staging-brevduen-ci-policy"
+  name   = "monoweb-stg-brevduen-ci-policy"
   policy = data.aws_iam_policy_document.brevduen_ci_role.json
 }
 
