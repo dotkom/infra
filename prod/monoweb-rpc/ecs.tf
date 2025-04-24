@@ -13,16 +13,16 @@ module "rpc_evergreen_service" {
   alb_health_check_timeout = 15
 
   task_count    = 1
-  task_cpu      = 1024 / 8
-  task_memory   = 1024 / 8
+  task_cpu      = 1024 / 2
+  task_memory   = 1024 / 2
   task_role_arn = aws_iam_role.rpc.arn
 
   containers = [
     {
       container_name = "monoweb-prd-rpc"
       image          = data.aws_ecr_image.rpc.image_uri
-      cpu            = 1024 / 8
-      memory         = 1024 / 8
+      cpu            = 1024 / 2
+      memory         = 1024 / 2
       essential      = true
       environment    = data.doppler_secrets.monoweb_rpc.map
       ports          = [{ container_port = 4444, protocol = "tcp" }]
