@@ -8,7 +8,8 @@ module "static_bucket" {
   domain_name     = local.cdn_domain_name
   zone_id         = data.aws_route53_zone.online_ntnu_no.zone_id
   cors_allowed_origins = [
-    "http://localhost:3002"
+    "https://web.online.ntnu.no",
+    "https://dashboard.online.ntnu.no"
   ]
 
   depends_on = [module.cdn_domain_certificate]
