@@ -35,7 +35,7 @@ provider "aws" {
       Project     = "rpc-prod"
       Deployment  = "terraform"
       Repository  = "terraform-monorepo"
-      Environment = "prod"
+      Environment = "prd"
     }
   }
 }

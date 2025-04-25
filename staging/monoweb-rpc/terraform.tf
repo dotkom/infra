@@ -31,7 +31,7 @@ provider "aws" {
       Project     = "rpc-staging"
       Deployment  = "terraform"
       Repository  = "terraform-monorepo"
-      Environment = "staging"
+      Environment = "stg"
     }
   }
 }
