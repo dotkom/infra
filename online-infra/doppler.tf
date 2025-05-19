@@ -11,8 +11,3 @@ resource "doppler_secret" "aws_secret_access_key" {
   project = "appkom-passwords"
   value   = aws_iam_access_key.appkom.id
 }
-
-data "doppler_secrets" "terraform" {
-  config  = "prod"
-  project = "terraform"
-}
