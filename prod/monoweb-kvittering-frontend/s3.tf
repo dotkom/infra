@@ -2,6 +2,19 @@ resource "aws_s3_bucket" "archive" {
   bucket = "kvittering-archive.online.ntnu.no"
 }
 
+resource "aws_s3_bucket_lifecycle_configuration" "archive" {
+  bucket = aws_s3_bucket.archive.id
+
+  rule {
+    id = "debug"
+    status = "Enabled"
+    expiration {
+      days = 7
+    }
+  }
+}
+
+# see https://github.com/dotkom/terraform-monorepo/pull/216
 resource "aws_s3_bucket_cors_configuration" "archive" {
   bucket = aws_s3_bucket.archive.id
 
