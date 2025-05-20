@@ -6,7 +6,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "archive" {
   bucket = aws_s3_bucket.archive.id
 
   rule {
-    id = "debug"
+    id     = "debug"
     status = "Enabled"
     expiration {
       days = 7
