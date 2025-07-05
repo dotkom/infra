@@ -104,7 +104,7 @@ resource "aws_autoscaling_group" "evergreen_node_scaling_group" {
   name = "evergreen-prod-nodes"
 
   desired_capacity = 3
-  max_size         = 3
+  max_size         = 4
   min_size         = 1
 
   vpc_zone_identifier = aws_subnet.private[*].id

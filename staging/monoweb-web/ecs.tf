@@ -11,16 +11,16 @@ module "web_evergreen_service" {
   target_group_rule_priority  = 900
 
   task_count    = 1
-  task_cpu      = 1024 / 8
-  task_memory   = 1024 / 8
+  task_cpu      = 1024 / 4
+  task_memory   = 1024 / 4
   task_role_arn = aws_iam_role.web.arn
 
   containers = [
     {
       container_name = "monoweb-stg-web"
       image          = data.aws_ecr_image.web.image_uri
-      cpu            = 1024 / 8
-      memory         = 1024 / 8
+      cpu            = 1024 / 4
+      memory         = 1024 / 4
       essential      = true
       environment    = data.doppler_secrets.monoweb_web.map
       ports          = [{ container_port = 3000, protocol = "tcp" }]

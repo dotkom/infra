@@ -11,16 +11,16 @@ module "dashboard_evergreen_service" {
   target_group_rule_priority  = 1650
 
   task_count    = 1
-  task_cpu      = 1024 / 8
-  task_memory   = 1024 / 8
+  task_cpu      = 1024 / 4
+  task_memory   = 1024 / 4
   task_role_arn = aws_iam_role.dashboard.arn
 
   containers = [
     {
       container_name = "monoweb-stg-dashboard"
       image          = data.aws_ecr_image.dashboard.image_uri
-      cpu            = 1024 / 8
-      memory         = 1024 / 8
+      cpu            = 1024 / 4
+      memory         = 1024 / 4
       essential      = true
       environment    = data.doppler_secrets.monoweb_dashboard.map
       ports          = [{ container_port = 3000, protocol = "tcp" }]
