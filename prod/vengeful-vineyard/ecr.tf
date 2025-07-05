@@ -5,6 +5,6 @@ module "server_ecr_image" {
 }
 
 data "aws_ecr_image" "server" {
-  repository_name = "grades/stg/server"
+  repository_name = "vengeful-vineyard/prod/server"
   most_recent     = true
 }

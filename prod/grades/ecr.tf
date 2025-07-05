@@ -1,7 +1,7 @@
 module "server_ecr_image" {
   source = "../../modules/aws-ecr-repository"
 
-  ecr_repository_name = "grades/prod/server"
+  ecr_repository_name = "grades/prd/server"
 }
 
 data "aws_ecr_image" "server" {
@@ -12,7 +12,7 @@ data "aws_ecr_image" "server" {
 module "web_ecr_image" {
   source = "../../modules/aws-ecr-repository"
 
-  ecr_repository_name = "grades/prod/web"
+  ecr_repository_name = "grades/prd/web"
 }
 
 data "aws_ecr_image" "web" {
