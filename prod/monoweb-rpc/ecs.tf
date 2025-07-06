@@ -10,12 +10,15 @@ module "rpc_evergreen_service" {
   target_group_container_port = 4444
   target_group_rule_priority  = 1600
 
-  alb_health_check_timeout = 15
+  alb_health_check_timeout = 29
 
   task_count    = 1
   task_cpu      = 1024 / 2
   task_memory   = 1024 / 2
   task_role_arn = aws_iam_role.rpc.arn
+
+  runtime_platform_architecture = "ARM64"
+  runtime_platform_operating_system = "LINUX"
 
   containers = [
     {

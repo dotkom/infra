@@ -15,6 +15,9 @@ module "dashboard_evergreen_service" {
   task_memory   = 1024 / 4
   task_role_arn = aws_iam_role.dashboard.arn
 
+  runtime_platform_architecture = "ARM64"
+  runtime_platform_operating_system = "LINUX"
+
   containers = [
     {
       container_name = "monoweb-stg-dashboard"

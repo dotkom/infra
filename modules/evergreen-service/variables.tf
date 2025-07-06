@@ -16,6 +16,20 @@ variable "domain_names" {
 }
 
 ## ---------------------------------------------------------------------------------------------------------------------
+## Host system variables
+## ---------------------------------------------------------------------------------------------------------------------
+
+variable "runtime_platform_operating_system" {
+  type = string
+  description = "Operating system type for the ECS task"
+}
+
+variable "runtime_platform_architecture" {
+  type = string
+  description = "Architecture for the ECS task"
+}
+
+## ---------------------------------------------------------------------------------------------------------------------
 ## ECS related variables
 ##
 ## The ECS service is the actual service that is being provisioned. All services are deployed into private subnets.

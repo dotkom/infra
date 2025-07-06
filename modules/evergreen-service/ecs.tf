@@ -13,6 +13,11 @@ resource "aws_ecs_task_definition" "this" {
   execution_role_arn       = data.aws_iam_role.ecs_task_execution_role.arn
   task_role_arn            = var.task_role_arn
 
+  runtime_platform {
+    cpu_architecture = var.runtime_platform_architecture
+    operating_system_family = var.runtime_platform_operating_system
+  }
+
   container_definitions = jsonencode([
     for container in var.containers : {
       name      = container.container_name
