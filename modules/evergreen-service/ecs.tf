@@ -14,7 +14,7 @@ resource "aws_ecs_task_definition" "this" {
   task_role_arn            = var.task_role_arn
 
   runtime_platform {
-    cpu_architecture = var.runtime_platform_architecture
+    cpu_architecture        = var.runtime_platform_architecture
     operating_system_family = var.runtime_platform_operating_system
   }
 

@@ -20,12 +20,12 @@ variable "domain_names" {
 ## ---------------------------------------------------------------------------------------------------------------------
 
 variable "runtime_platform_operating_system" {
-  type = string
+  type        = string
   description = "Operating system type for the ECS task"
 }
 
 variable "runtime_platform_architecture" {
-  type = string
+  type        = string
   description = "Architecture for the ECS task"
 }
 

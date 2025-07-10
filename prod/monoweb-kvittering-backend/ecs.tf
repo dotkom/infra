@@ -15,7 +15,7 @@ module "evergreen_service" {
   task_memory   = 1024 / 2
   task_role_arn = aws_iam_role.task_role.arn
 
-  runtime_platform_architecture = "X86_64"
+  runtime_platform_architecture     = "X86_64"
   runtime_platform_operating_system = "LINUX"
 
   containers = [
