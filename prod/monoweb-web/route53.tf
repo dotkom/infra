@@ -1,6 +1,5 @@
 locals {
-  // TODO: Change to online.ntnu.no when deploying to production
-  web_domain_name = "web.online.ntnu.no"
+  web_domain_name = "online.ntnu.no"
 }
 
 data "aws_route53_zone" "online_ntnu_no" {
