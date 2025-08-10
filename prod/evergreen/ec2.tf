@@ -101,7 +101,7 @@ resource "aws_launch_template" "evergreen_arm64" {
   block_device_mappings {
     device_name = "/dev/xvda"
     ebs {
-      volume_size = 30
+      volume_size = 100
       volume_type = "gp3"
     }
   }
@@ -172,7 +172,7 @@ resource "aws_launch_template" "evergreen_amd64" {
   block_device_mappings {
     device_name = "/dev/xvda"
     ebs {
-      volume_size = 30
+      volume_size = 100
       volume_type = "gp3"
     }
   }
