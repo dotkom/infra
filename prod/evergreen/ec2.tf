@@ -118,8 +118,8 @@ resource "aws_launch_template" "evergreen_arm64" {
 resource "aws_autoscaling_group" "evergreen_arm64_scaling_group" {
   name = "evergreen-prod-nodes-arm64"
 
-  desired_capacity = 10
-  max_size         = 10
+  desired_capacity = 6
+  max_size         = 6
   min_size         = 1
 
   vpc_zone_identifier = aws_subnet.private[*].id
