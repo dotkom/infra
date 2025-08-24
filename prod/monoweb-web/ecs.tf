@@ -11,8 +11,8 @@ module "web_evergreen_service" {
   target_group_rule_priority  = 901
 
   task_count    = 1
-  task_cpu      = 1024 * 1.75
-  task_memory   = 1024 * 1.75
+  task_cpu      = 1024
+  task_memory   = 1024
   task_role_arn = aws_iam_role.web.arn
 
   runtime_platform_architecture     = "ARM64"
@@ -22,8 +22,8 @@ module "web_evergreen_service" {
     {
       container_name = "monoweb-prd-web"
       image          = data.aws_ecr_image.web.image_uri
-      cpu            = 1024 * 1.75
-      memory         = 1024 * 1.75
+      cpu            = 1024
+      memory         = 1024
       essential      = true
       environment    = data.doppler_secrets.monoweb_web.map
       ports          = [{ container_port = 3000, protocol = "tcp" }]
