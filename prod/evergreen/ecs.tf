@@ -6,6 +6,11 @@ resource "aws_ecs_cluster" "evergreen" {
     name  = "containerInsights"
     value = "disabled"
   }
+
+  ordered_placement_strategy {
+    type  = "binpack"
+    field = "cpu"
+  }
 }
 
 resource "aws_ecs_capacity_provider" "amd64" {
