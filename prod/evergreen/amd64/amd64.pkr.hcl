@@ -7,24 +7,24 @@ packer {
   }
 }
 
-source "amazon-ebs" "amazon-linux-2" {
-  ami_name      = "evergreen-node-al2023-{{timestamp}}"
+source "amazon-ebs" "amazon-linux-2023" {
+  ami_name      = "evergreen-amd64-amazon-linux-2023-{{timestamp}}"
   instance_type = "t3.small"
   region        = "eu-north-1"
   source_ami_filter {
     filters = {
-      image-id            = "ami-0072b494fd3f58609"
+      image-id            = "ami-0ad49b719ae8df301"
       root-device-type    = "ebs"
       virtualization-type = "hvm"
     }
-    owners      = ["amazon"]
+    owners = ["amazon"]
   }
   ssh_username = "ec2-user"
 }
 
 build {
   name    = "everest-containers"
-  sources = ["source.amazon-ebs.amazon-linux-2"]
+  sources = ["source.amazon-ebs.amazon-linux-2023"]
 
   # Wait for cloud-init to finish
   provisioner "shell" {
@@ -34,6 +34,7 @@ build {
       # Select ECS Cluster for the ECS Container Agent to use
       "sudo cat /etc/ecs/ecs.config",
       "echo 'ECS_CLUSTER=evergreen-prod-cluster' | sudo tee -a /etc/ecs/ecs.config",
+      "echo 'ECS_IMAGE_PULL_BEHAVIOR=prefer-cached' | sudo tee -a /etc/ecs/ecs.config",
       # Install the AWS SSM Agent to allow remote access to the EC2 instance despite the instance not having a public IP.
       "sudo systemctl status amazon-ssm-agent",
       "sudo systemctl stop amazon-ssm-agent",

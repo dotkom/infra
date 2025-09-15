@@ -4,7 +4,7 @@ data "aws_ami" "evergreen_node" {
 
   filter {
     name   = "name"
-    values = ["evergreen-node-al2023-*"]
+    values = ["evergreen-amd64-amazon-linux-2023-*"]
   }
   filter {
     name   = "virtualization-type"
@@ -18,7 +18,7 @@ data "aws_ami" "evergreen_arm64" {
 
   filter {
     name   = "name"
-    values = ["evergreen-arm64-amazon-linux2023-*"]
+    values = ["evergreen-arm64-amazon-linux-2023-*"]
   }
   filter {
     name   = "virtualization-type"
