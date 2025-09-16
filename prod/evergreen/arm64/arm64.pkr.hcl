@@ -35,7 +35,6 @@ build {
       "while [ ! -f /var/lib/cloud/instance/boot-finished ]; do echo 'Waiting for cloud-init...'; sleep 1; done",
       # Select ECS Cluster for the ECS Container Agent to use
       "echo 'ECS_CLUSTER=evergreen-prod-cluster' | sudo tee -a /etc/ecs/ecs.config",
-      "echo 'ECS_IMAGE_PULL_BEHAVIOR=prefer-cached' | sudo tee -a /etc/ecs/ecs.config",
       # Install the AWS SSM Agent to allow remote access to the EC2 instance despite the instance not having a public IP.
       "sudo systemctl status amazon-ssm-agent",
       "sudo systemctl stop amazon-ssm-agent",
