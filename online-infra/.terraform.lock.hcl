@@ -25,7 +25,7 @@ provider "registry.terraform.io/dopplerhq/doppler" {
 }
 
 provider "registry.terraform.io/hashicorp/aws" {
-  version     = "5.68.0"
+  version     = "6.13.0"
   constraints = "~> 5.68"
   hashes = [
     "h1:C0VIWK9EIjEB17oy+sJoMprCJWrU6eQ8ZG5eWVZMejY=",
