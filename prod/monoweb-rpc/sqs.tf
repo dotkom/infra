@@ -1,5 +1,5 @@
 resource "aws_sqs_queue" "email_delivery" {
-  name       = "monoweb-stg-rpc-email-delivery"
+  name       = "monoweb-prd-rpc-email-delivery"
   fifo_queue = false
 
   redrive_policy = jsonencode({
@@ -13,7 +13,7 @@ resource "aws_sqs_queue" "email_delivery" {
 }
 
 resource "aws_sqs_queue" "email_deliver_dlq" {
-  name       = "monoweb-stg-rpc-email-delivery-dlq"
+  name       = "monoweb-prd-rpc-email-delivery-dlq"
   fifo_queue = false
 
   # Allow up to 14 days for Dotkom to investigate issues with email delivery
