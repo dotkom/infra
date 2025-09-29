@@ -37,6 +37,19 @@ data "aws_iam_policy_document" "rpc_permissions" {
     ]
     resources = ["*"]
   }
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "sqs:SendMessage",
+      "sqs:ReceiveMessage",
+      "sqs:DeleteMessage"
+    ]
+    resources = [
+      aws_sqs_queue.email_delivery.arn,
+      aws_sqs_queue.email_deliver_dlq.arn
+    ]
+  }
 }
 
 resource "aws_iam_policy" "rpc_permissions" {
