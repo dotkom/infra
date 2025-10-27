@@ -10,7 +10,7 @@ module "web_evergreen_service" {
   target_group_container_port = 3000
   target_group_rule_priority  = 901
 
-  task_count    = 1
+  task_count    = 2
   task_cpu      = 1024
   task_memory   = 1024
   task_role_arn = aws_iam_role.web.arn
