@@ -78,4 +78,14 @@ resource "aws_ecs_service" "this" {
     container_port   = var.target_group_container_port
     target_group_arn = aws_lb_target_group.this.arn
   }
+
+  ordered_placement_strategy {
+    type  = "binpack"
+    field = "memory"
+  }
+
+  ordered_placement_strategy {
+    type  = "binpack"
+    field = "cpu"
+  }
 }
