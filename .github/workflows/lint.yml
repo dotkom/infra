@@ -33,29 +33,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
-      - run: tflint --chdir bootstrap -f compact
-
-      - run: tflint --chdir modules/aws-acm-certificate -f compact
-      - run: tflint --chdir modules/aws-api-gateway -f compact
-      - run: tflint --chdir modules/aws-ecr-repository -f compact
-      - run: tflint --chdir modules/aws-s3-public-bucket -f compact
-      - run: tflint --chdir modules/evergreen-service -f compact
-      - run: tflint --chdir modules/vercel-application -f compact
-      - run: tflint --chdir modules/github-actions-iam -f compact
-
-      - run: tflint --chdir online-infra -f compact
-
-      - run: tflint --chdir prod/evergreen -f compact
-      - run: tflint --chdir prod/grades -f compact
-      - run: tflint --chdir prod/grafana -f compact
-      - run: tflint --chdir prod/monoweb-brevduen -f compact
-      - run: tflint --chdir prod/monoweb-dashboard -f compact
-      - run: tflint --chdir prod/monoweb-invoicification -f compact
-      - run: tflint --chdir prod/monoweb-rif -f compact
-      - run: tflint --chdir prod/monoweb-web -f compact
-      - run: tflint --chdir prod/rds -f compact
-      - run: tflint --chdir prod/vengeful-vineyard -f compact
-      - run: tflint --chdir staging/monoweb-brevduen -f compact
-      - run: tflint --chdir staging/monoweb-dashboard -f compact
-      - run: tflint --chdir staging/monoweb-rpc -f compact
-      - run: tflint --chdir staging/monoweb-web -f compact
+      - run: tflint --recursive -f compact
