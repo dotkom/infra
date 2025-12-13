@@ -14,7 +14,7 @@ terraform {
     }
     sentry = {
       source  = "jianyuan/sentry"
-      version = "0.14.6"
+      version = "0.14.7"
     }
     doppler = {
       source  = "DopplerHQ/doppler"
