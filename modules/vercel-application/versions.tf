@@ -4,7 +4,7 @@ terraform {
   required_providers {
     vercel = {
       source  = "vercel/vercel"
-      version = "~> 2.9"
+      version = "~> 4.0"
     }
     aws = {
       source  = "hashicorp/aws"
