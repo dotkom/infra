@@ -16,7 +16,7 @@ everything in OnlineWeb and featured first-party applications built by Dotkom.
   things like DNS, global KMS keys, and other shared resources.
 
 Each project is organized as a separate directory in the root of the repository, with each environment a project is
-available in, located in the `prod` or `staging` directories.
+available in, located in the `prod`  directory.
 
 ## Contributing
 

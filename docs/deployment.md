@@ -92,7 +92,7 @@ jobs:
 As seen, the `actions/github-script` step triggers a workflow dispatch with the necessary resources. This will translate to the following command invocation in the Terraform monorepo:
 
 ```bash
-pushd staging/monoweb-rpc
+pushd prod/monoweb-rpc
   terraform init
   terraform apply -auto-approve -target=module.rpc_evergreen_service
 popd

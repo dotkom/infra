@@ -3,8 +3,5 @@ setup:
     config: prod
     path: prod
   - project: terraform
-    config: staging
-    path: staging
-  - project: terraform
     config: prod
     path: online-infra
