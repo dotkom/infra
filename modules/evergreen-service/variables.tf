@@ -57,7 +57,6 @@ variable "containers" {
     }))
     networking = optional(object({
       hostname = optional(string)
-      links    = optional(list(string))
     }))
   }))
   description = "List of containers to run"
@@ -124,4 +123,14 @@ variable "alb_health_check_grace_period_seconds" {
   type        = number
   description = "Grace period for the health check"
   default     = 60
+}
+
+variable "vpc_subnets" {
+  type        = list(string)
+  description = "VPC Subnets"
+}
+
+variable "vpc_security_group" {
+  type        = string
+  description = "VPC Security Group"
 }

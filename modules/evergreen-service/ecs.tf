@@ -1,13 +1,8 @@
-moved {
-  from = aws_ecs_task_definition.rif
-  to   = aws_ecs_task_definition.this
-}
-
 resource "aws_ecs_task_definition" "this" {
   family = var.service_name
 
-  requires_compatibilities = ["EC2"]
-  network_mode             = "bridge"
+  requires_compatibilities = ["FARGATE"]
+  network_mode             = "awsvpc"
   cpu                      = var.task_cpu
   memory                   = var.task_memory
   execution_role_arn       = data.aws_iam_role.ecs_task_execution_role.arn
@@ -49,14 +44,8 @@ resource "aws_ecs_task_definition" "this" {
         command = container.healthcheck.command
       }
       hostname = container.networking == null ? null : container.networking.hostname
-      links    = container.networking == null ? null : container.networking.links
     }
   ])
-}
-
-moved {
-  from = aws_ecs_service.rif
-  to   = aws_ecs_service.this
 }
 
 resource "aws_ecs_service" "this" {
@@ -68,7 +57,7 @@ resource "aws_ecs_service" "this" {
   force_new_deployment = true
   task_definition      = aws_ecs_task_definition.this.arn
 
-  launch_type         = "EC2"
+  launch_type         = "FARGATE"
   scheduling_strategy = "REPLICA"
 
   health_check_grace_period_seconds = var.alb_health_check_grace_period_seconds
@@ -79,13 +68,9 @@ resource "aws_ecs_service" "this" {
     target_group_arn = aws_lb_target_group.this.arn
   }
 
-  ordered_placement_strategy {
-    type  = "binpack"
-    field = "memory"
-  }
-
-  ordered_placement_strategy {
-    type  = "binpack"
-    field = "cpu"
+  network_configuration {
+    subnets          = var.vpc_subnets
+    security_groups  = [var.vpc_security_group]
+    assign_public_ip = false
   }
 }
