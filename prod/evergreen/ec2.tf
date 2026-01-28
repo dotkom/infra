@@ -12,20 +12,6 @@ data "aws_ami" "evergreen_node" {
   }
 }
 
-data "aws_ami" "evergreen_arm64" {
-  most_recent = true
-  owners      = ["891459268445"]
-
-  filter {
-    name   = "name"
-    values = ["evergreen-arm64-amazon-linux-2023-*"]
-  }
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-}
-
 ## ---------------------------------------------------------------------------------------------------------------------
 ## EC2 Instance for the NAT Gateway using fck-nat
 ## ---------------------------------------------------------------------------------------------------------------------
@@ -72,77 +58,6 @@ resource "aws_instance" "nat_gateway" {
 
   lifecycle {
     create_before_destroy = true
-  }
-}
-
-## ---------------------------------------------------------------------------------------------------------------------
-## EC2 Launch Template and ASG for ARM64 Evergreen Nodes
-## ---------------------------------------------------------------------------------------------------------------------
-
-resource "aws_launch_template" "evergreen_arm64" {
-  name        = "evergreen-prod-node-arm64"
-  description = "Evergreen ARM64 node launch template"
-
-  instance_type          = "t4g.small"
-  image_id               = data.aws_ami.evergreen_arm64.id
-  vpc_security_group_ids = [aws_security_group.evergreen_node.id]
-
-  iam_instance_profile {
-    arn = aws_iam_instance_profile.evergreen_node_service_role.arn
-  }
-
-  credit_specification {
-    cpu_credits = "standard"
-  }
-
-  disable_api_stop        = false
-  disable_api_termination = false
-
-  block_device_mappings {
-    device_name = "/dev/xvda"
-    ebs {
-      volume_size = 35
-      volume_type = "gp3"
-    }
-  }
-
-  tag_specifications {
-    resource_type = "instance"
-    tags = {
-      Name = "evergreen-prod-node"
-    }
-  }
-}
-
-
-resource "aws_autoscaling_group" "evergreen_arm64_scaling_group" {
-  name = "evergreen-prod-nodes-arm64"
-
-  desired_capacity = 6
-  max_size         = 6
-  min_size         = 1
-
-  vpc_zone_identifier = aws_subnet.private[*].id
-
-  launch_template {
-    id      = aws_launch_template.evergreen_arm64.id
-    version = aws_launch_template.evergreen_arm64.latest_version
-  }
-
-  health_check_type         = "EC2"
-  health_check_grace_period = 300
-
-  instance_refresh {
-    strategy = "Rolling"
-    preferences {
-      min_healthy_percentage = 50
-    }
-  }
-
-  tag {
-    key                 = "AmazonECSManaged"
-    value               = true
-    propagate_at_launch = true
   }
 }
 
