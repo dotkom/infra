@@ -38,7 +38,7 @@ resource "aws_ecs_capacity_provider" "arm64" {
 
 resource "aws_ecs_cluster_capacity_providers" "evergreen" {
   cluster_name       = aws_ecs_cluster.evergreen.name
-  capacity_providers = [aws_ecs_capacity_provider.amd64.name, aws_ecs_capacity_provider.arm64.name]
+  capacity_providers = [aws_ecs_capacity_provider.amd64.name, aws_ecs_capacity_provider.arm64.name, "FARGATE"]
 
   default_capacity_provider_strategy {
     capacity_provider = aws_ecs_capacity_provider.amd64.name
