@@ -2,7 +2,7 @@ resource "aws_lb_target_group" "this" {
   name        = var.service_name
   port        = var.target_group_container_port
   protocol    = "HTTP"
-  target_type = "instance"
+  target_type = "ip"
   vpc_id      = data.aws_vpc.evergreen.id
 
   deregistration_delay = 0
