@@ -1,3 +1,25 @@
+data "aws_vpc" "evergreen" {
+  filter {
+    name   = "tag:Name"
+    values = ["evergreen-prod-vpc"]
+  }
+}
+
+data "aws_subnets" "vpc_private" {
+  filter {
+    name   = "vpc-id"
+    values = [data.aws_vpc.evergreen.id]
+  }
+  filter {
+    name   = "tag:Name"
+    values = ["evergreen-prod-private-*"]
+  }
+}
+
+data "aws_security_group" "evergreen_node" {
+  name = "evergreen-prod-node"
+}
+
 module "rpc_evergreen_service" {
   source = "../../modules/evergreen-service"
 
@@ -13,19 +35,22 @@ module "rpc_evergreen_service" {
   alb_health_check_timeout = 29
 
   task_count    = 1
-  task_cpu      = 1024
-  task_memory   = 1024 * 1.5
+  task_cpu      = 1024 * 2
+  task_memory   = 1024 * 4
   task_role_arn = aws_iam_role.rpc.arn
 
   runtime_platform_architecture     = "ARM64"
   runtime_platform_operating_system = "LINUX"
 
+  vpc_subnets        = data.aws_subnets.vpc_private.ids
+  vpc_security_group = data.aws_security_group.evergreen_node.id
+
   containers = [
     {
       container_name = "monoweb-prd-rpc"
       image          = data.aws_ecr_image.rpc.image_uri
-      cpu            = 1024
-      memory         = 1024 * 1.5
+      cpu            = 1024 * 2
+      memory         = 1024 * 4
       essential      = true
       environment    = data.doppler_secrets.monoweb_rpc.map
       ports          = [{ container_port = 4444, protocol = "tcp" }]
