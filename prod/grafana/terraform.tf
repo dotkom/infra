@@ -10,7 +10,7 @@ terraform {
   required_providers {
     grafana = {
       source  = "grafana/grafana"
-      version = "~> 3.22"
+      version = "~> 4.0"
     }
     doppler = {
       source  = "DopplerHQ/doppler"
