@@ -10,6 +10,11 @@ data "aws_lb" "evergreen_gateway" {
   name = "evergreen-prod-gateway"
 }
 
+data "aws_lb_listener" "https" {
+  load_balancer_arn = data.aws_lb.evergreen_gateway.arn
+  port              = 443
+}
+
 resource "aws_route53_record" "dashboard_alb" {
   name    = local.web_domain_name
   type    = "A"
