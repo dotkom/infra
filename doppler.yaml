@@ -5,3 +5,6 @@ setup:
   - project: terraform
     config: prod
     path: online-infra
+  - project: terraform
+    config: prod
+    path: dev
