@@ -1,3 +1,25 @@
+data "aws_vpc" "evergreen" {
+  filter {
+    name   = "tag:Name"
+    values = ["evergreen-prod-vpc"]
+  }
+}
+
+data "aws_subnets" "vpc_private" {
+  filter {
+    name   = "vpc-id"
+    values = [data.aws_vpc.evergreen.id]
+  }
+  filter {
+    name   = "tag:Name"
+    values = ["evergreen-prod-private-*"]
+  }
+}
+
+data "aws_security_group" "evergreen_node" {
+  name = "evergreen-prod-node"
+}
+
 module "server_evergreen_service" {
   source = "../../modules/evergreen-service"
 
@@ -17,6 +39,9 @@ module "server_evergreen_service" {
 
   runtime_platform_architecture     = "X86_64"
   runtime_platform_operating_system = "LINUX"
+
+  vpc_subnets        = data.aws_subnets.vpc_private.ids
+  vpc_security_group = data.aws_security_group.evergreen_node.id
 
   containers = [
     {
