@@ -9,7 +9,7 @@ resource "aws_db_instance" "default" {
   availability_zone                     = "eu-north-1a"
   backup_retention_period               = 30
   engine                                = "postgres"
-  engine_version                        = "16.3"
+  engine_version                        = "16.13"
   instance_class                        = "db.t4g.medium"
   username                              = data.doppler_secrets.rds.map.USERNAME
   password                              = data.doppler_secrets.rds.map.PASSWORD
