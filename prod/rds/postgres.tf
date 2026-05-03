@@ -4,6 +4,7 @@ locals {
     vengeful_staging = { role = data.doppler_secrets.rds.map.VENGEFUL_STAGING_ROLE, password = sensitive(data.doppler_secrets.rds.map.VENGEFUL_STAGING_PASSWORD) }
     monoweb_prod     = { role = data.doppler_secrets.rds.map.MONOWEB_PROD_ROLE, password = sensitive(data.doppler_secrets.rds.map.MONOWEB_PROD_PASSWORD) }
     monoweb_staging  = { role = data.doppler_secrets.rds.map.MONOWEB_STAGING_ROLE, password = sensitive(data.doppler_secrets.rds.map.MONOWEB_STAGING_PASSWORD) }
+    grades_prod      = { role = data.doppler_secrets.rds.map.GRADES_PROD_ROLE, password = sensitive(data.doppler_secrets.rds.map.GRADES_PROD_PASSWORD) }
   }
 }
 
