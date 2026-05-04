@@ -29,7 +29,7 @@ module "frontend_evergreen_service" {
   domain_names         = [local.frontend_domain_name]
 
   target_group_container_name = "grades-prd-frontend"
-  target_group_container_port = 5001
+  target_group_container_port = 3000
   target_group_rule_priority  = 1700
 
   task_count    = 1
@@ -51,9 +51,9 @@ module "frontend_evergreen_service" {
       memory         = 1024 / 2
       essential      = true
       environment    = data.doppler_secrets.grades_frontend.map
-      ports          = [{ container_port = 5001, protocol = "tcp" }]
+      ports          = [{ container_port = 3000, protocol = "tcp" }]
       healthcheck = {
-        command = ["CMD-SHELL", "curl -f http://0.0.0.0:5001/health 2>/dev/null || exit 1"]
+        command = ["CMD-SHELL", "curl -f http://0.0.0.0:3000/health 2>/dev/null || exit 1"]
       }
     }
   ]
