@@ -3,7 +3,7 @@ resource "aws_route53_record" "minecraft_server" {
   name    = "play.online.ntnu.no"
   type    = "A"
   ttl     = 300
-  records = ["129.241.153.251"]
+  records = ["129.241.100.225"]
 }
 
 resource "aws_route53_record" "minecraft_srv" {
