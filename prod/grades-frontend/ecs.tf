@@ -30,7 +30,7 @@ module "frontend_evergreen_service" {
 
   target_group_container_name = "grades-prd-frontend"
   target_group_container_port = 3000
-  target_group_rule_priority  = 1700
+  target_group_rule_priority  = 1101
 
   task_count    = 1
   task_cpu      = 1024 / 4
