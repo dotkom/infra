@@ -42,3 +42,11 @@ resource "aws_route53_record" "frontend_www_alb" {
     evaluate_target_health = false
   }
 }
+
+resource "aws_route53_record" "ownership_txt" {
+  zone_id = data.aws_route53_zone.grades_no.zone_id
+  name    = local.frontend_domain_name
+  type    = "TXT"
+  ttl     = 300
+  records = [data.doppler_secrets.grades_frontend.map.DOMAIN_OWNERSHIP_TXT]
+}
