@@ -5,7 +5,7 @@ resource "aws_account_primary_contact" "root" {
   country_code       = "NO"
   district_or_county = "Trondheim"
   full_name          = "Andrej Lazic"
-  phone_number       = "+4746747280"
+  phone_number       = "+4746747280" # Must NOT include whitepace or special characters, only numbers and the + sign are allowed
   postal_code        = "7034"
   state_or_region    = "Trondheim"
   website_url        = "https://online.ntnu.no"
@@ -16,7 +16,7 @@ locals {
     name  = "Brage Andreas Hoven"
     title = "Operations and Security Manager"
     email = "brage.andreas.hoven@online.ntnu.no"
-    phone = "+47 954 71 333"
+    phone = "+4795471333"
   }
 }
 
@@ -35,7 +35,7 @@ resource "aws_account_alternate_contact" "billing" {
   name          = "Sofie Regine Kjølaas"
   title         = "Financial Manager"
   email_address = "sofie.regine.kjolaas@online.ntnu.no"
-  phone_number  = "+47 991 03 761"
+  phone_number  = "+4799103761"
 }
 
 resource "aws_account_alternate_contact" "security" {
