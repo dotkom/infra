@@ -23,7 +23,7 @@ locals {
 resource "aws_account_alternate_contact" "operations" {
   alternate_contact_type = "OPERATIONS"
 
-  name          = local.dotokom_leader.name
+  name          = local.dotkom_leader.name
   title         = local.dotkom_leader.title
   email_address = local.dotkom_leader.email
   phone_number  = local.dotkom_leader.phone
@@ -41,7 +41,7 @@ resource "aws_account_alternate_contact" "billing" {
 resource "aws_account_alternate_contact" "security" {
   alternate_contact_type = "SECURITY"
 
-  name          = local.dotokom_leader.name
+  name          = local.dotkom_leader.name
   title         = local.dotkom_leader.title
   email_address = local.dotkom_leader.email
   phone_number  = local.dotkom_leader.phone
