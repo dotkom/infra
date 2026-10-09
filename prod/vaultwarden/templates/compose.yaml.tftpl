@@ -1,0 +1,50 @@
+services:
+  vaultwarden:
+    image: vaultwarden/server:1.37.3
+    restart: unless-stopped
+    env_file: /srv/vaultwarden/secrets/vaultwarden.env
+    environment:
+      DOMAIN: https://${domain}
+      SIGNUPS_ALLOWED: "false"
+%{ if google_sso_enabled ~}
+      SIGNUPS_DOMAINS_WHITELIST: online.ntnu.no
+%{ endif ~}
+      INVITATIONS_ALLOWED: "true"
+      SSO_ENABLED: "${google_sso_enabled}"
+      SSO_ONLY: "${google_sso_enabled}"
+      SSO_SIGNUPS_ALLOWED: "${google_sso_enabled}"
+      SSO_SIGNUPS_MATCH_EMAIL: "true"
+      SSO_ALLOW_UNKNOWN_EMAIL_VERIFICATION: "false"
+      SSO_AUTHORITY: https://accounts.google.com
+      SSO_SCOPES: email profile
+      SSO_AUTHORIZE_EXTRA_PARAMS: access_type=offline&prompt=consent&hd=online.ntnu.no
+      SSO_PKCE: "true"
+      ORG_CREATION_USERS: ${jsonencode(organization_creators)}
+      ORG_EVENTS_ENABLED: "true"
+      EVENTS_DAYS_RETAIN: "90"
+      IP_HEADER: X-Forwarded-For
+      EMAIL_CHANGE_ALLOWED: "false"
+    ports:
+      - "127.0.0.1:8080:80"
+    volumes:
+      - /srv/vaultwarden/data:/data
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+  caddy:
+    image: caddy:2.11.4-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /opt/vaultwarden/Caddyfile:/etc/caddy/Caddyfile:ro
+      - /srv/vaultwarden/caddy-data:/data
+      - /srv/vaultwarden/caddy-config:/config
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

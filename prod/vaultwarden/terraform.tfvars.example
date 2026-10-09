@@ -1,0 +1,10 @@
+# Replace every placeholder with values from your stack.it.ntnu.no project.
+network_id                  = "PROJECT-NETWORK-UUID"
+floating_ip_pool            = "PUBLIC-FLOATING-IP-NETWORK"
+floating_ip_subnet_id       = "PUBLIC-IPV4-FLOATING-IP-SUBNET-UUID"
+image_id                    = "UBUNTU-24.04-IMAGE-UUID"
+flavor_name                 = "FLAVOR-WITH-2-GIB-RAM"
+key_pair_name               = "YOUR-SSH-KEY-PAIR"
+ssh_allowed_cidrs           = ["YOUR-ADMIN-IP/32"]
+organization_creator_emails = ["YOUR-ORG-BOOTSTRAP-EMAIL"]
+google_sso_enabled          = false # Enable after installing Google OAuth credentials via Doppler.
