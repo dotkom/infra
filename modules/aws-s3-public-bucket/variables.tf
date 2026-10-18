@@ -26,6 +26,7 @@ variable "cors_allowed_origins" {
 }
 
 variable "expiring_tag" {
+  description = "objects with this tag will expire after amount of days specified"
   type = list(object({
     id    = string
     key   = string
