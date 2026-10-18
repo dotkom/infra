@@ -23,6 +23,8 @@ data "aws_iam_policy_document" "rpc_permissions" {
     actions = [
       "s3:PutObject",
       "s3:PutObjectAcl",
+      "s3:PutObjectTagging",
+      "s3:DeleteObjectTagging",
     ]
     resources = [
       "arn:aws:s3:::cdn.online.ntnu.no/*"
