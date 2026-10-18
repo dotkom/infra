@@ -25,6 +25,16 @@ variable "cors_allowed_origins" {
   default     = []
 }
 
+variable "expiring_tag" {
+  type = list(object({
+    id    = string
+    key   = string
+    value = string
+    days  = number
+  }))
+  default = []
+}
+
 locals {
   tags_all = merge(var.tags, {
     Module = "aws-s3-public-bucket"
