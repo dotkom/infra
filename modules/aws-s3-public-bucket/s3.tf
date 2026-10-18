@@ -44,3 +44,27 @@ resource "aws_s3_bucket_policy" "cloudfront" {
   bucket = aws_s3_bucket.this.id
   policy = data.aws_iam_policy_document.cdn.json
 }
+
+resource "aws_s3_bucket_lifecycle_configuration" "this" {
+  count  = length(var.expiring_tag) > 0 ? 1 : 0
+  bucket = aws_s3_bucket.this.id
+
+  dynamic "rule" {
+    for_each = var.expiring_tag
+    content {
+      id     = rule.value.id
+      status = "Enabled"
+
+      filter {
+        tag {
+          key   = rule.value.key
+          value = rule.value.value
+        }
+      }
+
+      expiration {
+        days = rule.value.days
+      }
+    }
+  }
+}
