@@ -14,7 +14,7 @@ module "static_bucket" {
   expiring_tag = [{
     id    = "expiring-pending-uploads"
     key   = "status"
-    value = "pending"
+    value = "ephemeral"
     days  = 1
   }]
 
