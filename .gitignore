@@ -13,3 +13,9 @@
 ### Environment Variables ###
 
 *.env.*
+clouds.yaml
+clouds.yml
+clouds (*).yaml
+clouds (*).yml
+secure.yaml
+secure.yml

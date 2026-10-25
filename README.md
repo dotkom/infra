@@ -14,6 +14,7 @@ everything in OnlineWeb and featured first-party applications built by Dotkom.
   [README](bootstrap/README.md) for why the bootstrap exists, and why you should not touch it.
 - `online-infra` contains core infrastructure for OnlineWeb, which is independent of the application code. This includes
   things like DNS, global KMS keys, and other shared resources.
+- [`prod/vaultwarden`](prod/vaultwarden/) provisions the shared password manager on NTNU OpenStack.
 
 Each project is organized as a separate directory in the root of the repository, with each environment a project is
 available in, located in the `prod`  directory.

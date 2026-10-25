@@ -1,0 +1,32 @@
+#!/bin/bash
+set -euo pipefail
+umask 077
+
+# Cinder exposes the first 20 UUID characters as the virtio disk serial.
+# Fail closed if the expected disk is unavailable; never guess /dev/vdb.
+device=/dev/disk/by-id/virtio-${volume_serial}
+for attempt in $(seq 1 60); do
+    [ -b "$device" ] && break
+    sleep 2
+done
+test -b "$device"
+filesystem=$(blkid -s TYPE -o value "$device" || true)
+if [ -z "$filesystem" ]; then
+    # Refuse to format disks with any existing partition/filesystem signatures.
+    test -z "$(wipefs --no-act --noheadings --output TYPE "$device")"
+    mkfs.ext4 "$device"
+else
+    test "$filesystem" = ext4
+fi
+uuid=$(blkid -s UUID -o value "$device")
+mkdir -p /srv/vaultwarden
+if ! grep -q "UUID=$uuid /srv/vaultwarden " /etc/fstab; then
+    echo "UUID=$uuid /srv/vaultwarden ext4 defaults 0 2" >> /etc/fstab
+fi
+mountpoint -q /srv/vaultwarden || mount /srv/vaultwarden
+mkdir -p /srv/vaultwarden/{data,secrets,backups,caddy-data,caddy-config}
+chmod 700 /srv/vaultwarden /srv/vaultwarden/secrets /srv/vaultwarden/backups
+python3 /opt/vaultwarden/admin.py
+systemctl enable --now docker
+systemctl daemon-reload
+systemctl enable --now vaultwarden.service vaultwarden-backup.timer
