@@ -30,7 +30,7 @@ variable "alert_email" {
   type        = list(string)
 }
 variable "trigger_type" {
-  description = "The type of trigger for alerts: actual/forecasted"
+  description = "The type of trigger for alerts: ACTUAL or FORECASTED"
   type        = string
 }
 variable "adjustment_period" {
