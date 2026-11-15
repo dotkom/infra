@@ -38,3 +38,12 @@ variable "alert_email" {
   description = "the recipient emails of alerts"
   type        = list(string)
 }
+variable "trigger_type" {
+  description = "the type of trigger for alerts: actual/forecasted"
+  type        = string
+}
+variable "adjustment_period" {
+  description = "Number of past months used to calculate the auto-adjusted budget"
+  type        = number
+  default     = 6
+}
