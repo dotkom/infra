@@ -7,15 +7,6 @@ variable "budget_type" {
   type        = string
   default     = "COST"
 }
-variable "limit_amount" {
-  description = "amount to budget"
-  type        = number
-}
-variable "limit_unit" {
-  description = "the unit of currency used for the budget, for example USD or NOK"
-  type        = string
-  default     = "USD"
-}
 variable "time_unit" {
   description = "DAILY, MONTHLY, QUARTERLY, or ANNUALLY"
   type        = string
