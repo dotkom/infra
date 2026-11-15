@@ -1,19 +1,3 @@
-# module "budget" {
-# source       = "../../modules/budget-service"
-# budget_name  = "ELB-Cost-Alert"
-# budget_type  = "COST"
-# limit amount = 30
-# limit_unit   = "USD"
-# time_unit    = "MONTHLY"
-
-# filter_key   = "SERVICE"
-# filter_value = ["Amazon Elastic Load Balancing"]
-
-# alert_threshold = "100"
-# alert_email     = ["dotkom@online.ntnu.no"]
-# }
-
-
 locals {
   budgets = {
     elb-forecasted = {
