@@ -1,5 +1,5 @@
 variable "budget_name" {
-  description = "name of the budget"
+  description = "Name of the budget"
   type        = string
 }
 variable "budget_type" {
@@ -17,20 +17,20 @@ variable "filter_key" {
   type        = string
 }
 variable "filter_value" {
-  description = "what type of service you want to filter for ex. [\"Amazon Simple Storage Service\""
+  description = "What type of service you want to filter for ex. [\"Amazon Simple Storage Service\""
   type        = list(string)
 }
 variable "alert_threshold" {
-  description = "the precentage value for alerts"
+  description = "The precentage value for alerts"
   type        = number
   default     = 100
 }
 variable "alert_email" {
-  description = "the recipient emails of alerts"
+  description = "The recipient emails of alerts"
   type        = list(string)
 }
 variable "trigger_type" {
-  description = "the type of trigger for alerts: actual/forecasted"
+  description = "The type of trigger for alerts: actual/forecasted"
   type        = string
 }
 variable "adjustment_period" {
