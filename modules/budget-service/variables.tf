@@ -12,7 +12,7 @@ variable "limit_amount" {
   type        = number
 }
 variable "limit_unit" {
-  description = "the limit unit ex. usd"
+  description = "the unit of currency used for the budget, for example USD or NOK"
   type        = string
   default     = "USD"
 }
