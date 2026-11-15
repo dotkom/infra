@@ -26,7 +26,7 @@ variable "filter_key" {
   type        = string
 }
 variable "filter_value" {
-  description = "ex. [\"Amazon Simple Storage Service\""
+  description = "what type of service you want to filter for ex. [\"Amazon Simple Storage Service\""
   type        = list(string)
 }
 variable "alert_threshold" {
