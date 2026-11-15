@@ -55,10 +55,6 @@ resource "aws_instance" "nat_gateway" {
   tags = {
     Name = "evergreen-prod-nat"
   }
-
-  lifecycle {
-    create_before_destroy = true
-  }
 }
 
 ## ---------------------------------------------------------------------------------------------------------------------
