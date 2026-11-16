@@ -15,7 +15,7 @@ module "static_bucket" {
     id    = "expiring-pending-uploads"
     key   = "status"
     value = "ephemeral"
-    days  = 1
+    days  = 2
   }]
 
   depends_on = [module.cdn_domain_certificate]
